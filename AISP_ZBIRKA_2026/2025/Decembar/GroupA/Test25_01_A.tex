@@ -1,0 +1,91 @@
+%\section*{Новембар 2025. Група А}
+%\addcontentsline{toc}{section}{Нов. 2025. Група А}
+\rok{Новембар 2025.}{A}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Merge Sort}
+%\subsubsection{Задатак 1. \textit{Merge Sort}}
+%\textbf{Задатак 1. \textit{Merge Sort}} \\
+Написати методу \textit{merge()} \textit{MergeSort} алгоритма за сортирање целобројног низа дужине \textit{n}.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Улаз је несортиран низ целих бројева.
+    \item Излаз је сортирани низ целих бројева.
+    \item У шаблону се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+    \item У оквиру класе \texttt{MergeSort} написати имплементацију за методу: 
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private static void merge(long[] arr, long[] tmpArray,
+                int lowerIndex, int middleIndex, int upperIndex)
+    \end{Verbatim}
+    
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Спајање две једноструко спрегнуте листе, растући поредак}
+Спојити две претходно сортиране, једноструко спрегнуте листе у једну, тако да елементи резултатујуће листе буду сортирани у растућем поретку. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам писати у оквиру класе \texttt{LinkedList}.
+    \item Претпоставимо да су почетне листе већ сортиране.
+    \item Захтеван потпис методе: 
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static LinkedList MergingTwoLinkedLists(LinkedList list1, 
+                                     LinkedList list2)
+    \end{Verbatim}
+
+\end{itemize}
+
+
+
+ \textbf{Пример:}
+
+\begin{itemize}
+    \item \textbf{Улаз:} $1 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 4$  ; \quad $1 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 4$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 1 \leftrightarrow 2 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 3 \leftrightarrow 4 \leftrightarrow 4$
+    \item \textbf{Улаз:} $2 \leftrightarrow 5 \leftrightarrow 6 \leftrightarrow 7$ ; \quad $1 \leftrightarrow 4 \leftrightarrow 8 \leftrightarrow 9$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 2 \leftrightarrow 4 \leftrightarrow 5 \leftrightarrow 6 \leftrightarrow 7 \leftrightarrow 8 \leftrightarrow 9$
+\end{itemize}
+
+\zadatak{3}{Matryoshka Doll Problem}
+Руске матријошке лутке (\textit{matryoshka}) су сет лутки које се смештају једна унутар друге. Свака лутка има одређену величину и може да садржи само лутку која је мања од ње, а може да буде смештена само у лутку која је већа од ње.
+
+\textbf{Проблем:} Имате низ лутки различитих величина које су насумично поређане. Треба да их сортирате и угнездите тако да највећа буде споља, а унутар ње следећа по величини, итд.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Задатак решавати у оквиру методе \texttt{public void MatryoshkaDollSort(int[] arr)}
+    \item Затим симулирати угнеждавање користећи стекове:
+    \begin{itemize}
+        \item Сваки стек представља један сет угнеждених лутки.
+        \item Правило: на врх стека може да стане само лутка која је мања од оне испод.
+        \item Ако лутка не може да стане на тренутни стек, креира се нови стек.
+    \end{itemize}
+    \item Задатак решити са временском комплексношћу $O(n)$.
+    \item Резултат извршавања алгоритма треба да буде сортирање оригиналног низа у опадајућем редоследу.
+\end{itemize}
+
+\textbf{Пример 1:}
+\begin{itemize}
+    \item \textbf{Улаз} (несортирани низ целих бројева): \texttt{[15, 6, 20, 8, 12, 4]}
+    \item \textbf{Стекови:} \\
+    \texttt{\{15, 6, 4\}} \quad -- 4 је на врху стека \\
+    \texttt{\{20, 8\}} \quad\quad -- 8 је на врху стека \\
+    \texttt{\{12\}} \quad\quad\quad -- 12 је на врху стека
+    \item \textbf{Излаз 1:} \texttt{[4, 6, 8, 12, 15, 20]}
+\end{itemize}
+
+\noindent \textbf{Пример 2:}
+\begin{itemize}
+    \item \textbf{Улаз} (несортирани низ целих бројева): \texttt{[7, 6, 10, 5, 4]}
+    \item \textbf{Стекови:} \\
+    \texttt{\{7, 6, 5, 4\}} \quad -- 4 је на врху стека \\
+    \texttt{\{10\}} \quad\quad\quad\quad\:\, -- 10 је на врху стека
+    \item \textbf{Излаз 2:} \texttt{[4, 5, 6, 7, 10]}
+\end{itemize}
+
+\sablon{Шаблон првог теста}{2025/Decembar/GroupA/AISP2025_Test1_GrupaA.linq}

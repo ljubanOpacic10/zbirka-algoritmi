@@ -1,0 +1,152 @@
+\documentclass[10pt]{book}
+
+% Подешавања за српску ћирилицу
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[serbianc]{babel}
+
+% Димензије књиге и подешавање маргина према вашим параметрима
+\usepackage[paperheight=9.3in,paperwidth=6.5in,top=1in,bottom=1in,right=0.5in,left=1in,heightrounded]{geometry}
+
+% Додатни корисни пакети за збирку задатака
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\usepackage{tikz}
+%\usetikzlibrary{trees}
+\usepackage{forest}
+
+
+\usepackage{listings}
+\usepackage{soul}
+\usepackage{caption}
+% Пакет за визуелне иконице (нпр. у учионици)
+\usepackage{fontawesome5}
+
+% Пакет за модификацију изгледа поглавља (chapter)
+\usepackage{titlesec}
+
+% Подешавање да се уместо "Глава 1" прикаже иконица и наслов
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\filleft} % Формат: центрирано, подебљано, велика слова
+  {\Huge \textcolor{black}{\faBookOpen} 
+  %\quad \textcolor{gray}{\faChalkboardTeacher}
+  } % Иконице уместо "Глава X"
+  {8pt} % Размак између иконица и самог наслова поглавља
+  {\Large} % Величина фонта за наслов поглавља
+
+\titleformat{\section}[hang]{\large\bfseries}{\thesection}{8pt}{ }
+  {\small} % Величина фонта за наслов поглавља
+
+ 
+
+\newcommand{\rok}[2]{
+\phantomsection 
+\section*{#1 Група #2.}
+\addcontentsline{toc}{section}{#1 Група #2}
+}
+
+
+\newcommand{\zadatak}[2]{
+    \vspace{0.3cm}
+    \phantomsection 
+    \subsection*{\normalsize Задатак #1. \textit{#2}}
+    \addcontentsline{toc}{subsection}{\textbf{Зад. #1.} \textit{#2}}
+}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{\oldtexttt{\footnotesize #1}}
+
+% Подешавање линкова у садржају
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Збирка задатака - Алгоритми и структуре података},
+}
+
+\captionsetup[lstlisting]{
+    labelfont=bf,             % Ознака (нпр. Листинг 1.1) ће бити подебљана
+    textfont=it,              % Остатак текста наслова ће бити искошен (italic)
+    singlelinecheck=false,    % Спречава аутоматско центрирање кратких наслова
+    justification=raggedright % Форсира поравнање комплетног наслова улево
+}
+
+\renewcommand{\lstlistlistingname}{Списак листинга}
+\renewcommand{\lstlistingname}{Листинг}
+%Podesavanja za listig i sablone
+\lstset{
+    basicstyle=\ttfamily\scriptsize,
+    keywordstyle=\color{blue},
+    stringstyle=\color{red},
+    commentstyle=\color{green!60!black},
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    breaklines=true,
+    frame=single,
+    showstringspaces=false
+}
+% Нова команда за убацивање C# шаблона
+% #1 = Caption (наслов листинга)
+% #2 = Путања до .linq или .cs фајла
+\newcommand{\sablon}[2]{
+    \vspace{0.4cm}
+    \lstinputlisting[
+        language={[Sharp]C},
+        caption={#1},
+        firstline=3
+    ]{#2}
+    \vspace{0.4cm}
+}
+
+\title{\textbf{Збирка задатака из предмета}\\Алгоритми и структуре података}
+\author{Студијски програм Инжењерство информационих система}
+\date{ФТН 2026.}
+
+\begin{document}
+
+\maketitle
+
+% Садржај збирке
+\tableofcontents
+
+\lstlistoflistings
+
+\newpage
+
+\part{Библиотека алгоритама и структура}
+\label{part.BibliotekaKomponenti}
+
+\chapter{Библиотека алгоритама и структура података}
+
+\input{AISPBiblioteka/AISPBiblioteka}
+
+
+% ==========================================
+% ДЕО: ЗАДАЦИ
+% ==========================================
+\part{Задаци са тестова}
+\label{part.ZadaciTestova}
+
+% Поглавље за једну академску годину
+\chapter{Тестови 2025-2026}
+\label{ch.Testovi2025-2026}
+% Одвајање конкретног теста унутар академске године
+
+\input{2025/Decembar/GroupA/Test25_01_A}
+\input{2025/Februar/GroupA/Test25_02_A}
+% ==========================================
+% ДЕО: РЕШЕЊА
+% ==========================================
+\part{Решења тестова}
+\label{part.Resenja}
+
+
+
+\end{document}

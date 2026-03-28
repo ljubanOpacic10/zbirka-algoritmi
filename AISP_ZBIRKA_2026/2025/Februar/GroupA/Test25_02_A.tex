@@ -1,0 +1,141 @@
+\rok{Фебруар 2026.}{А}
+
+% Информације о тесту 
+Други практични тест одржан 10.02.2026. године. Време израде теста је 90 минута. Ово је \textit{closed book test}, није дозвољено коришћење додатних материјала. Укупан број бодова на тесту је 25. За израду се користи LINQPad шаблон који се мора преименовати у \texttt{AISP2025\_Test2\_GrupaA\_IT1g2024}.
+
+\zadatak{1}{Конверзија листе у матрицу суседства}
+Написати алгоритам који ће вршити директну конверзију листе суседства у матрицу суседства. Алгоритам као улазни параметар треба да прихвати динамички низ чворова, а треба да резултатује креираном матрицом.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item У шаблону је закоментарисана метода \texttt{ConvertAdjacencyListToAdjacencyMatrix} која треба да садржи имплементацију конверзије листе у матрицу суседства.
+    \item У \texttt{Main} методи обезбедити начин за тестирање и проверу нове функционалности.
+\end{itemize}
+
+\zadatak{2}{Проналажење првог карактера који се не понавља}
+Написати алгоритам временске комплексности $O(n)$ који идентификује и исписује први карактер у прослеђеном стрингу који се у том стрингу појављује само једном.
+
+ \textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Користити \textit{Hash} табелу из шаблона за чување броја појављивања сваког карактера.
+    \item Имплементацију писати у методи: \\ \texttt{public static void firstUnique(string str)}.
+    \item Игнорисати разлику између малих и великих слова.
+    \item Ако такав карактер не постоји, исписати поруку да су сви карактери дупликати.
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+    \item \textbf{Улаз 1:} ,,Analiza''  \quad\textbf{Излаз 1:} 'n' 
+    \item \textbf{Улаз 2:} ,,Baba'' \quad\textbf{Излаз 2:} ,,Svi karakteri su duplikati''
+\end{itemize}
+
+\zadatak{3}{Проналажење другог највећег елемента (BST)}
+У оквиру класе \texttt{BinarySearchTree} написати методу која проналази другу по величини вредност у стаблу.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Јавна метода: \texttt{public int getSecondLargest()}.
+    \item Приватна метода: \texttt{private void getSecondLargest(Node current, int counter)}. (Савет: Можете користити бројач или претрагу десног подстабла).
+    \item Подразумева се да стабло има барем два чвора.
+    \item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\noindent \textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+    circle,
+    draw,
+    thick,
+    fill=gray!20,
+    minimum size=8mm,
+    inner sep=1pt,
+    s sep=8mm,
+    l sep=12mm,
+    edge={-, thick},
+    font=\small
+}
+[8
+    [4
+        [2
+            [, phantom]
+            [3]
+        ]
+        [5]
+    ]
+    [9
+        [, phantom]
+        [11]
+    ]
+]
+\end{forest}
+
+\vspace{0.3cm} % Мали размак између стабла и текста
+\textbf{Слика 1.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+
+\begin{itemize}
+    \item \textbf{Улаз 1:} BST са слике 1. 
+    \item \textbf{Излаз 1:} 9 
+\end{itemize}
+
+
+
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+    circle,
+    draw,
+    thick,
+    fill=gray!20,
+    minimum size=8mm,
+    inner sep=1pt,
+    s sep=8mm,
+    l sep=12mm,
+    edge={-, thick},
+    font=\small
+}
+[10
+    [4
+        [2
+            [3]
+            [, phantom]
+        ]
+        [6
+            [5]
+            [9]
+        ]
+    ]
+    [20
+        [12
+            [, phantom]
+            [14]
+        ]
+        [29
+            [27]
+            [, phantom]
+        ]
+    ]
+]
+\end{forest}
+
+\vspace{0.3cm} % Мали размак између стабла и текста
+\textbf{Слика 2.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+
+
+\begin{itemize}
+    \item \textbf{Улаз 2:} BST са слике 2.
+    \item \textbf{Излаз 2:} 27
+\end{itemize}
+
