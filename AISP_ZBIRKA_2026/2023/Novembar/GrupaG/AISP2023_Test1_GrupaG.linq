@@ -1,0 +1,343 @@
+<Query Kind="Program" />
+
+void Main()
+{
+	// OBAVEZNO OBEZBEDITI KOD ZA TESTIRANJE ALGORITAMA U MAIN METODI
+}
+
+// IME I PREZIME:
+// BROJ INDEKSA:
+
+// ZADATAK 1 - Brisanje elemenata iz reda (Queue Dequeue)
+// -----------------------------------------------------
+public class Queue
+{
+	private Node tail = null;
+	private int count = 0;
+	
+	private class Node
+	{
+		internal int value;
+		internal Node next;
+		
+		public Node(int v, Node n)
+		{
+			value = v;
+			next = n;
+		}
+	}
+	
+	public int size()
+	{
+		return count;
+	}
+	
+	public bool isEmpty
+	{
+		get
+		{
+			return count == 0;
+		}
+	}
+	
+	public void enqueue(int value)
+	{
+		Node temp = new Node(value, null);
+		if (tail == null)
+		{
+			tail = temp;
+			tail.next = tail;
+		}
+		else
+		{
+			temp.next = tail.next;
+			tail.next = temp;
+			tail = temp;
+		}
+		count++;
+	}
+	
+	// -----------------------------------------------------
+	public int? dequeue()
+	{
+		return null;
+	}
+	// -----------------------------------------------------
+	
+	public int? peek()
+	{
+		if (count == 0)
+		{
+			return null;
+		}
+		
+		int value;
+		if (tail == tail.next)
+		{
+			value = (int)tail.value;
+		}
+		else
+		{
+			value = tail.next.value;
+		}
+		return value;
+	}
+}
+// -----------------------------------------------------
+
+
+
+// ZADATAK 2 - Da li elementi liste stvaraju Kaprekarov broj? 
+// -----------------------------------------------------
+public class LinkedList
+{
+	
+	private class Node
+	{
+		internal int value;
+		internal Node next;
+		
+		public Node(int v, Node n)
+		{
+			value = v;
+			next = n;
+		}
+	}
+	
+	private Node head;
+	private int count = 0;
+	
+	// -----------------------------------------------------
+	public bool IsNumberKaprekar()
+	{
+		return false;
+	}
+	// -----------------------------------------------------
+	
+	public void addHead(int value)
+	{
+		head = new Node(value, head);
+		count++;
+	}
+	
+	public void addTail(int value)
+	{
+		Node newNode = new Node(value, null);
+		Node curr = head;
+		
+		if (head == null)
+		{
+			head = newNode;
+			count++;
+			return;
+		}
+		
+		while (curr.next != null)
+		{
+			curr = curr.next;
+		}
+		
+		curr.next = newNode;
+		count++;
+	}
+		
+	public void print()
+	{		
+		Node temp = head;
+		while (temp != null)
+		{			
+			Console.Write(temp.value + "  ");
+			temp = temp.next;
+		}
+	}		
+	
+	public bool searchList(int value)
+	{
+		Node temp = findNode(value);
+		if (temp != null)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public bool removeHead()
+	{
+		if (count == 0)
+		{
+			return false;
+		}
+		head = head.next;
+		count--;
+		return true;
+	}
+	
+	public bool delete(int value)
+	{
+		Node temp = head;
+		if (count == 0)
+		{
+			return false;
+		}
+		
+		if (temp.value == value)
+		{
+			head = head.next;
+			count--;
+			return true;
+		}
+		
+		while (temp.next != null)
+		{
+			if (temp.next.value == value)
+			{
+				temp.next = temp.next.next;
+				count--;
+				return true;
+			}
+			temp = temp.next;
+		}
+		return false;
+	}
+	
+	public void deleteList()
+	{
+		head = null;
+		count = 0;
+	}
+	
+
+	private Node findNode(int value)
+	{
+		Node temp = head;
+		while (temp != null)
+		{
+			if (temp.value == value)
+			{
+				return temp;
+			}
+			temp = temp.next;
+		}
+		return null;
+	}
+}
+// -----------------------------------------------------
+
+
+
+// ZADATAK 3 - Isogram
+// -----------------------------------------------------
+
+// -----------------------------------------------------
+public static bool IsNumberIsogram(long number)
+{
+	return false;
+}
+// -----------------------------------------------------
+
+public class MergeSort
+{
+	private static void merge(long[] arr, long[] tmpArray, int lowerIndex, int middleIndex, int upperIndex)
+	{
+		int lowerStart = lowerIndex;
+		int lowerStop = middleIndex;
+		int upperStart = middleIndex + 1;
+		int upperStop = upperIndex;
+		int count = lowerIndex;
+		
+		//Prolazi kroz dva podniza i u temp niz upisuje sortirane elemente
+		//Ova petlja staje cim se jedan niz isprazni, tj svi elemeni se prebace u temp niz
+		while (lowerStart <= lowerStop && upperStart <= upperStop)
+		{
+			if (arr[lowerStart] < arr[upperStart])
+			{
+				tmpArray[count++] = arr[lowerStart++];
+			}
+			else
+			{
+				tmpArray[count++] = arr[upperStart++];
+			}
+		}
+		
+		//Naredne dve while petlje sluze da isprazne preostale elemente nizova
+		//Ovo je uredu posto su podnizovi u ovom momentu sortirani
+		while (lowerStart <= lowerStop)
+		{
+			tmpArray[count++] = arr[lowerStart++];
+		}
+		
+		while (upperStart <= upperStop)
+		{
+			tmpArray[count++] = arr[upperStart++];
+		}
+		
+		for (int i= lowerIndex; i<= upperIndex; i++)
+		{
+			arr[i] = tmpArray[i];
+		}
+	}
+	
+	//Rekurzivna metoda koja ce da izdeli niz na podnizove
+	private static void mergeSrt(long[] arr, long[] tmpArray, int lowerIndex, int upperIndex)
+	{
+		if (lowerIndex >= upperIndex) //Uslov terminacije rekurzije
+			return;
+			
+		int middleIndex = (lowerIndex + upperIndex) / 2; //Trazimo centralni element (njegov index)
+		mergeSrt(arr, tmpArray, lowerIndex, middleIndex); //Rekurzivni poziv za levi podniz
+		mergeSrt(arr, tmpArray, middleIndex+1, upperIndex); //Rekurzivni poziv za desni podniz
+		merge(arr, tmpArray, lowerIndex, middleIndex, upperIndex); //Sortiranje i spajanje podnizova
+	}
+	
+	//Inicijalna metoda koja se poziva za sortiranje. Prihvata niz koji zelimo da sortiramo.
+	public static void sort(long[] arr)
+	{
+		int size = arr.Length;
+		long[] tmpArray = new long[size]; //Kreira se pomocni niz za sortiranje
+		mergeSrt(arr, tmpArray, 0, size-1); //Inicijalni poziv rekurzivnoj metodi. 
+											//Prosledjujemo: niz koji sortiramo, pomocni niz, donju i gornju granicu niza (indekse).
+	}
+}
+
+public class RandomArrayGenerator
+{	
+	public long[] GenerateRandomArray(long n)
+	{
+		RandomNumberGen random = new RandomNumberGen();
+		long[] randomArray = new long[n];
+		
+		for(int i = 0; i < n; i++)
+		{			
+			randomArray[i] = random.Next();
+		}		
+		return randomArray;
+	}
+}
+
+public class RandomNumberGen
+{
+	private long mod = 4294967296;
+    private const long a = 214013;
+    private const long c = 2531011;
+	private long min = 0;
+	private long max = 100;
+    private double seed;
+	
+	public RandomNumberGen()
+	{
+		seed = (long)DateTime.Now.Ticks % mod;
+	}
+	
+	public RandomNumberGen(long min, long max) : this()
+	{
+		this.min = min;
+		this.max = max;
+	}
+	
+	public long Next()
+	{
+		seed = ((a * seed) + c) % mod;
+		return (long)((seed / (mod - 1)) * (max - min) + min);
+	}
+}
+// -----------------------------------------------------
