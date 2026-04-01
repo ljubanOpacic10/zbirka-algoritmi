@@ -1,0 +1,80 @@
+\rok{Новембар 2024.}{A}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Merge Sort}
+Написати методу \textit{merge()} \textit{MergeSort} алгоритма за сортирање целобројног низа дужине \textit{n}.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Улаз је несортиран низ целих бројева.
+    \item Излаз је сортирани низ целих бројева.
+    \item У шаблону се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+    \item У оквиру класе \texttt{MergeSort} написати имплементацију за методу:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private static void merge(long[] arr, long[] tmpArray,
+                int lowerIndex, int middleIndex, int upperIndex)
+    \end{Verbatim}
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Спајање две једноструко спрегнуте листе, растући поредак}
+Спојити две претходно сортиране, једноструко спрегнуте листе у једну, тако да елементи резултујуће листе буду сортирани у растућем поретку. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам писати у оквиру класе \texttt{LinkedList}.
+    \item Претпоставимо да су почетне листе већ сортиране.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static LinkedList MergingTwoLinkedLists(LinkedList list1,
+                                     LinkedList list2)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+    \item \textbf{Улаз:} $1 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 4$  ; \quad $1 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 4$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 1 \leftrightarrow 2 \leftrightarrow 2 \leftrightarrow 3 \leftrightarrow 3 \leftrightarrow 4 \leftrightarrow 4$
+    \item \textbf{Улаз:} $2 \leftrightarrow 5 \leftrightarrow 6 \leftrightarrow 7$ ; \quad $1 \leftrightarrow 4 \leftrightarrow 8 \leftrightarrow 9$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 2 \leftrightarrow 4 \leftrightarrow 5 \leftrightarrow 6 \leftrightarrow 7 \leftrightarrow 8 \leftrightarrow 9$
+\end{itemize}
+
+
+
+\zadatak{3}{Сума бројева реда једнака \textit{k}}
+Написати алгоритам који проналази све узастопне поднизове елемената у реду чија је сума једнака задатом броју $k$. Метода треба да испише сваки подниз који задовољава овај услов.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Задатак решавати помоћу структуре реда (класа \texttt{Queue}) која је дата у оквиру шаблона задатка.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void FindSubsequencesWithSum(int targetSum)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Пример 1:}
+\begin{itemize}
+    \item \textbf{Улаз за ред:} 1, 4, 1, 1, 5 ; $k = 6$
+    \item \textbf{Испис:}
+    \begin{itemize}
+        \item Подниз суме 6: 1 4 1
+        \item Подниз суме 6: 4 1 1
+        \item Подниз суме 6: 1 5
+    \end{itemize}
+\end{itemize}
+
+\textbf{Пример 2:}
+\begin{itemize}
+    \item \textbf{Улаз за ред:} 2, 5, 1, 7, 2 ; $k = 8$
+    \item \textbf{Испис:}
+    \begin{itemize}
+        \item Подниз суме 8: 2, 5, 1
+        \item Подниз суме 8: 1, 7
+    \end{itemize}
+\end{itemize}
+
+\sablon{AISP2024_Test1_GrupaA}{2024/Novembar/GrupaA/AISP2024_Test1_GrupaA.linq}

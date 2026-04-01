@@ -114,6 +114,15 @@ Return ONLY final LaTeX when ALL conditions are met:
 - NEVER return invalid LaTeX
 - NEVER ignore checklist failures
 
+## FILE WRITING RULES (CRITICAL)
+
+- ALWAYS use the `create_file` tool to write .tex files — NEVER use terminal commands (Python, PowerShell, etc.)
+- VS Code holds file locks on workspace files — terminal-based writes WILL fail with "Access denied"
+- Use `replace_string_in_file` for editing existing non-empty files
+- Use `create_file` for writing to new or empty files
+- NEVER attempt to delete/rename/copy .tex files via terminal
+- For `main.tex` updates, ALWAYS use `replace_string_in_file`
+
 ---
 
 ## GOAL

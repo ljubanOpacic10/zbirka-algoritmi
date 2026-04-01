@@ -1,0 +1,64 @@
+\rok{Новембар 2023.}{J}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Додавање елемената на почетак циркуларне листе}
+Написати методу која имплементира стандардан начин за додавање елемената на почетак циркуларне листе.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам написати у оквиру закоментарисане методе \texttt{addHead(int value)}.
+    \item Поменута метода се налази у оквиру класе \texttt{CircularList} која се налази у приложеном \textit{template}-у.
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Раздвајање позитивних и негативних бројева у двоструко спрегнутој листи}
+Креирати функцију која ће у оквиру двоструко спрегнуте листе одвојити позитивне и негативне бројеве тако да прво буду позитивни бројеви. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам мора да резултује у промени вредности постојеће двоструко спрегнуте листе.
+    \item Могу се мењати само вредности, а могу се превезивати и комплетни чворови.
+    \item Уколико постоји број 0, он мора бити тачно између позитивних и негативних бројева.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void SeparatePositivesAndNegatives()
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз:} $9 \leftrightarrow -4 \leftrightarrow -5 \leftrightarrow 1 \leftrightarrow 3 \leftrightarrow -2 \leftrightarrow 7 \leftrightarrow 0$ \\
+          \textbf{Излаз:} $9 \leftrightarrow 1 \leftrightarrow 3 \leftrightarrow 7 \leftrightarrow 0 \leftrightarrow -4 \leftrightarrow -5 \leftrightarrow -2$
+    \item \textbf{Улаз:} $1 \leftrightarrow -2 \leftrightarrow 3 \leftrightarrow 1 \leftrightarrow 5 \leftrightarrow 6$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 3 \leftrightarrow 1 \leftrightarrow 5 \leftrightarrow 6 \leftrightarrow -2$
+\end{itemize}
+
+
+
+\zadatak{3}{Перфектан број}
+Креирати функцију која ће проверавати да ли је неки број „перфектан". Перфектан број је број који се може написати као збир свих његових фактора искључујући сам тај број. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам треба да врати \texttt{bool} вредност.
+    \item Цифре прослеђеног броја неопходно је сместити у низ. Уколико се користи динамички низ, користити функцију \texttt{ToArray()} као би се од њега добио статички низ.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public bool IsNumberPerfect(long number)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз 1:} 20 \\
+          \textbf{Објашњење:} $1 + 2 + 4 + 5 + 10 = 20$ \\
+          \textbf{Излаз 1:} \texttt{true}
+    \item \textbf{Улаз 2:} 15 \\
+          \textbf{Објашњење:} $1 + 3 + 5 = 9$ \\
+          \textbf{Излаз 2:} \texttt{false}
+\end{itemize}
+
+\sablon{AISP2023_Test1_GrupaJ}{2023/Novembar/GrupaJ/AISP2023_Test1_GrupaJ.linq}

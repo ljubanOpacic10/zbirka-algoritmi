@@ -1,0 +1,63 @@
+\rok{Новембар 2023.}{I}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Проналажење елемента у реду (Queue Peek)}
+Написати методу која имплементира стандардан начин за проналажење елемента са врха реда.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам написати у оквиру закоментарисане методе \texttt{peek(int value)}.
+    \item Поменута метода се налази у оквиру класе \texttt{Queue} која се налази у придруженом шаблону.
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Померање 0 на крај двоструко спрегнуте листе}
+Креирати функцију која ће проћи кроз двоструко спрегнуту листу и померити све 0 на крај. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам мора да резултује у промени вредности постојеће двоструко спрегнуте листе.
+    \item Могу се мењати само вредности, а могу се превезивати и комплетни чворови.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void MoveZerosToEnd()
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз:} $9 \leftrightarrow -4 \leftrightarrow 0 \leftrightarrow 1 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 7 \leftrightarrow 0$ \\
+          \textbf{Излаз:} $9 \leftrightarrow -4 \leftrightarrow 1 \leftrightarrow 7 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 0$
+    \item \textbf{Улаз:} $1 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 1 \leftrightarrow 0 \leftrightarrow 0$ \\
+          \textbf{Излаз:} $1 \leftrightarrow 1 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 0 \leftrightarrow 0$
+\end{itemize}
+
+
+
+\zadatak{3}{Excessive број}
+Креирање функције која проверава да ли је неки број \textit{excessive number}. Excessive број је број код којег сума свих његових делилаца не сме бити већа од самог броја. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам треба да врати \texttt{bool} вредност.
+    \item Цифре прослеђеног броја неопходно је сместити у низ. Уколико се користи динамички низ, користити функцију \texttt{ToArray()} да би се добио статички низ.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public bool IsNumberExcessive(long number)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз 1:} 12 \\
+          Објашњење: $1 + 2 + 3 + 4 + 6 = 16$ \\
+          \textbf{Излаз 1:} \texttt{false}
+    \item \textbf{Улаз 2:} 15 \\
+          Објашњење: $1 + 3 + 5 = 9$ \\
+          \textbf{Излаз 2:} \texttt{true}
+\end{itemize}
+
+\sablon{AISP2023_Test1_GrupaI}{2023/Novembar/GrupaI/AISP2023_Test1_GrupaI.linq}

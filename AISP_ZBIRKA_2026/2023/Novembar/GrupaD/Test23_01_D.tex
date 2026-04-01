@@ -1,0 +1,60 @@
+\rok{Новембар 2023.}{D}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Брисање елемената из стека (Stack Pop)}
+Написати методу која имплементира стандардан начин за брисање елемената из стека.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам написати у оквиру закоментарисане методе \texttt{pop?()}.
+    \item Поменута метода се налази у оквиру класе \texttt{Stack} која се налази у приложеном шаблону.
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Инвертовање последњих k елемената једноструко повезане листе}
+Креирање функције која ће инвертовати последњих k елемената једноструко повезане листе. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам писати у оквиру класе \texttt{LinkedList}.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void InvertList(int k)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз:} $2 \rightarrow 3 \rightarrow 1 \rightarrow 6 \rightarrow 4$, $k = 2$ \\
+          \textbf{Излаз:} $2 \rightarrow 3 \rightarrow 1 \rightarrow 4 \rightarrow 6$
+    \item \textbf{Улаз:} $2 \rightarrow 3 \rightarrow 4$, $k = 3$ \\
+          \textbf{Излаз:} $4 \rightarrow 3 \rightarrow 2$
+\end{itemize}
+
+
+
+\zadatak{3}{Проналажење првог подниза чија сума одговара прослеђеној вредности}
+Креирати алгоритам који из низа целих бројева проналази прве поднизове дужине 3 чија сума је једнака прослеђеној вредности. Алгоритам је неопходно написати са линеарно-логаритамском временском комплексношћу $O(n \cdot \log n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Вредности у оквиру поднизова не смеју да се понављају.
+    \item У реализацији задатка може се користити алгоритам MergeSort који је дат у шаблону.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void FindFirstThreeNumberArray(long[] array, int size, int sum)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз:} \texttt{[2,4,3,6,0,8,5]}, \textit{size} $= 7$, \textit{sum} $= 10$ \\
+          \textbf{Излаз:} \texttt{Triplet is: 0 2 8}
+    \item \textbf{Улаз:} \texttt{[1,2,7,6,0,3]}, \textit{size} $= 6$, \textit{sum} $= 9$ \\
+          \textbf{Излаз:} \texttt{Triplet is: 0 2 7}
+\end{itemize}
+
+\sablon{AISP2023_Test1_GrupaD}{2023/Novembar/GrupaD/AISP2023_Test1_GrupaD.linq}

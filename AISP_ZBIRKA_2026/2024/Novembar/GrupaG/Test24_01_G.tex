@@ -1,0 +1,103 @@
+\rok{Новембар 2024.}{G}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Бинарно претраживање}
+Написати \textit{search} методу класе \texttt{BinarySearch}.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Улаз је сортиран низ целих бројева.
+    \item Излаз је \texttt{true} или \texttt{false}, у зависности да ли је број пронађен.
+    \item У шаблону се налази класа \texttt{SortedArrayGenerator} коју треба искористити за генерисање сортираног низа случајних бројева.
+    \item Креирати класу \texttt{BinarySearch} и у оквиру ње генерисати методу:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static bool search(long[] arr, int size, long value)
+    \end{Verbatim}
+    \item Тестирати у оквиру \texttt{Main} методе.
+\end{itemize}
+
+
+
+\zadatak{2}{Промена редоследа n елемената са краја реда, користећи стек}
+Имплементирати функцију која за задати ред целих бројева обрће редослед само последњих n елемената реда, користећи помоћни стек. Преостали елементи реда остају у истом редоследу.
+
+\textbf{Спецификација функције:}
+\begin{itemize}
+    \item Функција прима број n, где је n број елемената са краја реда које треба обрнути.
+    \item Функција треба користити стек (\textit{stack}) као помоћну структуру.
+    \item Елементи пре последњих n треба да остану у оригиналном редоследу.
+\end{itemize}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам писати у оквиру класе \texttt{Queue}.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void ReverseLastNQueueElements (int n)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Пример 1:}
+    \begin{itemize}
+        \item Оригинални ред: 1 2 3 4 5 6 7, $n = 4$
+        \item Ред након обртања последњих 4 елемената: 1 2 3 7 6 5 4
+    \end{itemize}
+    \item \textbf{Пример 2:}
+    \begin{itemize}
+        \item Оригинални ред: 5 3 2 1 8, $n = 5$
+        \item Ред након обртања последњих 5 елемената: 8 1 2 3 5
+    \end{itemize}
+    \item \textbf{Пример 3:}
+    \begin{itemize}
+        \item Оригинални ред: 1 2 3 4 5 6, $n = 7$
+        \item Неважећа вредност за n.
+    \end{itemize}
+\end{itemize}
+
+
+
+\zadatak{3}{Најдужи сегмент са непарним и парним чворовима}
+Чворови у повезаној листи могу формирати сегмент са наизменично непарним и парним вредностима ако задовољавају следеће услове:
+\begin{enumerate}
+    \item Сваки чвор у сегменту има вредност која је различита по парности од вредности претходног чвора.
+    \item Сегмент мора имати најмање 3 чвора.
+\end{enumerate}
+
+Задатак је пронаћи и вратити:
+\begin{enumerate}
+    \item Дужину најдужег сегмента са наизменично непарним и парним чворовима.
+    \item Почетну вредност сегмента.
+    \item Крајњу вредност сегмента.
+\end{enumerate}
+
+Ако ниједан такав сегмент не постоји, треба вратити низ [-1, -1, -1].
+
+\textbf{Додатни захтеви:}
+\begin{itemize}
+    \item Решавај овај задатак помоћу структуре листе (\textit{LinkedList}) из шаблона задатка.
+    \item Имплементирај га у оквиру методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public int[] findLongestSegment()
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Пример 1:}
+    \begin{itemize}
+        \item \textbf{Улаз:} листа: $1 \rightarrow 3 \rightarrow 5 \rightarrow 7$
+        \item \textbf{Излаз:} [-1, -1, -1]
+        \item Објашњење: Нема наизменичних вредности по парности, па не постоји валидан сегмент.
+    \end{itemize}
+    \item \textbf{Пример 2:}
+    \begin{itemize}
+        \item \textbf{Улаз:} листа: $2 \rightarrow 3 \rightarrow 4 \rightarrow 5 \rightarrow 6 \rightarrow 7$
+        \item \textbf{Излаз:} [6, 2, 7]
+        \item Објашњење: Најдужи сегмент је $2 \rightarrow 3 \rightarrow 4 \rightarrow 5 \rightarrow 6 \rightarrow 7$, са дужином 6. Почиње на вредности 2 и завршава се на вредности 7.
+    \end{itemize}
+\end{itemize}
+
+\sablon{AISP2024_Test1_GrupaG}{2024/Novembar/GrupaG/AISP2024_Test1_GrupaG.linq}

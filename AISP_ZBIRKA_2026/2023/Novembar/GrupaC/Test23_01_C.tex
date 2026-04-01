@@ -1,0 +1,68 @@
+\rok{Новембар 2023.}{C}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Брисање елемената из реда (Queue Dequeue)}
+Написати методу која имплементира стандардан начин за брисање елемената из реда.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам написати у оквиру закоментарисане методе \texttt{dequeue?()}.
+    \item Поменута метода се налази у оквиру класе \texttt{Queue} која се налази у придруженом \textit{template}-у.
+    \item Обезбедити код у \texttt{Main} методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Да ли је једноструко повезана листа бројева Фибоначијев секвенца?}
+Креирати функцију која ће проверавати да ли бројеви у једноструко повезаној листи одговарају Фибоначијевој секвенци. Фибоначијева секвенца је секвенца целих бројева код којих се сваки број добија сумом његова два претходника у секвенци. Алгоритам је неопходно написати са линеарном временском комплексношћу $O(n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Алгоритам писати у оквиру класе \texttt{LinkedList}.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public bool IsLinkedListFibonacci()
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз:} $0 \rightarrow 1 \rightarrow 1 \rightarrow 2 \rightarrow 3 \rightarrow 5 \rightarrow 8 \rightarrow 13 \rightarrow 21$ \\
+          \textbf{Излаз:} true
+    \item \textbf{Улаз:} $1 \rightarrow 1 \rightarrow 2 \rightarrow 3$ \\
+          \textbf{Излаз:} false
+    \item \textbf{Улаз:} null \\
+          \textbf{Излаз:} false
+\end{itemize}
+
+
+
+\zadatak{3}{Проналажење поднизова чија сума одговара прослеђеној вредности}
+Креирати алгоритам који из низа целих бројева проналази све поднизове дужине 3 чија сума је једнака прослеђеној вредности. Алгоритам је неопходно написати са линеарно-логаритамском временском комплексношћу $O(n \cdot \log n)$.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+    \item Вредности у оквиру поднизова не смеју да се понављају – не прихватају се различите комбинације бројева.
+    \item У реализацији задатка може се користити алгоритам MergeSort који је дат у шаблону.
+    \item Захтеван потпис методе:
+    \begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void FindThreeNumbers(long[] array, int size, int sum)
+    \end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+    \item \textbf{Улаз 1:} [2,4,3,6,0,8,5], 7, 10 \\
+          \textbf{Излаз 1:} \\
+          Triplet is: 0 2 8 \\
+          Triplet is: 0 4 6 \\
+          Triplet is: 2 3 5
+    \item \textbf{Улаз 2:} [1,2,7,6,0,3], 6, 9 \\
+          \textbf{Излаз 2:} \\
+          Triplet is: 0 2 7 \\
+          Triplet is: 0 3 6 \\
+          Triplet is: 1 2 6
+\end{itemize}
+
+\sablon{AISP2023_Test1_GrupaC}{2023/Novembar/GrupaC/AISP2023_Test1_GrupaC.linq}
