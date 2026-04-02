@@ -45,3 +45,10 @@ Before accepting LaTeX output, verify:
 ---
 
 If ANY check fails → fix before committing.
+
+## IMAGE VALIDATION
+- [ ] All images from PDF are included
+- [ ] Images are placed in correct task
+- [ ] \includegraphics is used
+- [ ] Image paths are valid
+- [ ] Captions are preserved (if exist)

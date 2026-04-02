@@ -1,0 +1,154 @@
+\rok{Март 2026.}{Б}
+
+Трећи поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 06.03.2026.
+
+\zadatak{1}{Имплементација DFSVisit методе \textit{Depth-First-Search} алгоритма}
+Написати имплементацију \texttt{DFSVisit} методе истоименог алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У \texttt{Main} методи креирати произвољан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив \texttt{DFS} методе.
+	\item У \textit{template}-у је метода \texttt{private void DFSVisit(LinkedList.Node node, int nodeIndex)} која је основна метода за рекурзивно извршавање DFS алгоритма.
+\end{itemize}
+
+\textbf{Потпис методе:}
+\begin{Verbatim}[fontsize=\small]
+private void DFSVisit(LinkedList.Node node, int nodeIndex)
+\end{Verbatim}
+
+\zadatak{2}{Чишћење дупликата (Keep First Occurrence)}
+Написати методу која из прослеђеног стринга уклања све накнадне појаве карактера који су се већ појавили, остављајући само њихову прву појаву. Резултат исписати у конзоли. Алгоритам треба да буде временске комплексности $O(n)$ и \textit{case-insensitive}.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити \textit{Hash} табелу из шаблона за чување броја појављивања сваког карактера.
+	\item Имплементацију писати у методи: \texttt{public static void keepFirstOccurrence (string str)}.
+	\item Временска комплексност треба да буде $O(n)$.
+	\item Игнорисати разлику између малих и великих слова.
+\end{itemize}
+
+\textbf{Потпис методе:}
+\begin{Verbatim}[fontsize=\small]
+public static void keepFirstOccurrence (string str)
+\end{Verbatim}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str = "Programiranje"}
+	\item \textbf{Излаз 1:} \texttt{"Progaminje"} (карактери \texttt{'r'} и \texttt{'a'} се понављају)
+\end{itemize}
+
+\zadatak{3}{Бројање чворова на специфичном нивоу N}
+У оквиру класе \texttt{BinarySearchTree} написати методу која броји колико се укупно чворова налази на тачно одређеном нивоу (дубини) \texttt{N}, где је корен стабла на нивоу 0.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода: \texttt{public int countNodesAtLevel (int targetLevel)}.
+	\item Приватна метода: \texttt{private int countNodesAtLevel (Node current, int currentLevel, int targetLevel)}.
+	\item Подразумева се да стабло има барем два чвора.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Потписи метода:}
+\begin{Verbatim}[fontsize=\small]
+public int countNodesAtLevel (int targetLevel)
+private int countNodesAtLevel (Node current, int currentLevel, int targetLevel)
+\end{Verbatim}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{targetLevel = 3}
+	\item \textbf{Излаз 1:} 1 (\texttt{"3"} се налази на тој дубини)
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{targetLevel = 2}
+	\item \textbf{Излаз 2:} 4 (\texttt{"2"}, \texttt{"6"}, \texttt{"12"} и \texttt{"29"})
+\end{itemize}
+
+\sablon{Шаблон другог поправног теста март 2026. група Б}{2025/Mart/GrupaB/AISP2025_PopravniTest3_Test2_GrupaB.linq}

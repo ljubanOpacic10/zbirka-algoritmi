@@ -48,6 +48,13 @@ STRICT RULES:
 - No interpretation
 - No summarization
 
+## IMAGE PROCESSING
+
+During extraction:
+- Detect all images in PDF
+- Map images to corresponding tasks
+- Preserve order of appearance
+
 ---
 
 ## STEP 2 — TRANSFORMATION
@@ -67,6 +74,27 @@ STRICT RULES:
 - Preserve all method signatures
 - Preserve all examples
 
+## IMAGE INTEGRATION
+
+During LaTeX generation:
+- Insert images into correct task sections
+- Use \includegraphics with relative paths
+- Preserve captions if available
+
+## VISUAL DECISION STEP (MANDATORY)
+
+Before writing LaTeX for a task with visuals, explicitly decide:
+
+- use native LaTeX reconstruction
+or
+- use extracted raster image
+
+Decision rule:
+- prefer native LaTeX reconstruction for simple academic tree/BST diagrams
+- use extracted raster images for non-trivial visuals
+
+This decision MUST happen before LaTeX generation.
+
 ---
 
 ## STEP 3 — VALIDATION
@@ -80,6 +108,11 @@ ACTION:
 OUTPUT:
 - PASS or FAIL
 - List of issues (if any)
+
+## IMAGE VALIDATION ENFORCEMENT
+
+If PDF contains images AND LaTeX does NOT include them:
+- VALIDATION = FAIL
 
 ---
 
@@ -163,3 +196,14 @@ If ANY of the following occurs:
 THEN:
 - Output is INVALID
 - MUST be fixed before returning final result
+
+## PROJECT STYLE PRIORITY
+
+If there is a conflict between generic rules and an existing good project example,
+follow the existing good project example.
+
+Priority order:
+1. Existing valid project `.tex` examples
+2. 02_LATEX_GENERATION_RULES.md
+3. 03_VALIDATION_CHECKLIST.md
+4. generic fallback behavior
