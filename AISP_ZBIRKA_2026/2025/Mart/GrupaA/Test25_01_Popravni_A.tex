@@ -1,0 +1,78 @@
+\rok{Март 2026.}{А}
+
+Трећи поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 06.03.2026.
+
+\zadatak{1}{Quick Sort}
+Написати \texttt{quickSort} методу Quick Sort алгоритма за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item У template-у се налази класа \texttt{RandomNumberGen} коју треба искористити за генерисање низа случајних бројева.
+	\item У оквиру класе \texttt{QuickSort} написати имплементацију за методу:
+	\begin{Verbatim}[fontsize=\small]
+private static void quickSort(int[] arr, int lower, int upper)
+	\end{Verbatim}
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+\zadatak{2}{Избацивање елемената ван парних граница}
+Имплементирати методу која у једном пролазу кроз повезану листу проналази први и последњи парни број. Метода треба да обрише све елементе који се налазе пре првог парног броја и све елементе који се налазе после последњег парног броја. Ако у листи нема парних бројева, листа треба да постане празна.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Ако минимална вредност не постоји (празна листа), вратити 0.
+	\item Алгоритам писати у оквиру класе \texttt{LinkedList}.
+	\item Алгоритам мора имати временску комплексност $O(n)$.
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\small]
+public void trimToEvenBounds()
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{1 -> 3 -> 4 -> 5 -> 6 -> 7}
+	\item \textbf{Излаз:} \texttt{4 -> 5 -> 6}
+\end{itemize}
+
+\zadatak{3}{Monitoring система за кеширање података (Cache Loss Tracker)}
+Развијате систем за кеширање који складишти податке различитих величина (у мегабајтима). Кеш меморија има строго ограничен капацитет. Подаци се уписују редом, а систем функционише по принципу "најстарији први напоље" (FIFO).
+
+Опис задатка: Написати методу која прима низ целих бројева \texttt{dataSizes} (величине података који пристижу) и \texttt{cacheCapacity} (максимални капацитет кеша).
+
+\begin{enumerate}
+	\item Подаци се додају у кеш један по један.
+	\item Пре него што се податак дода, мора се ослободити довољно простора брисањем најстаријих података.
+	\item Ако је сам податак који пристиже већи од укупног капацитета кеша, он се одбацује и сматра се "изгубљеним".
+	\item Метода треба да израчуна и врати укупну количину података (у MB) који су трајно обрисани или одбачени током процеса.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Повратна вредност: \texttt{int}.
+	\item Користити помоћну структуру реда (Queue) која је дата у шаблону.
+	\item Алгоритам писати у оквиру методе:
+	\begin{Verbatim}[fontsize=\small]
+public int calculateTotalDataLoss(int[] dataSizes, int cacheCapacity)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{dataSizes = [10, 20, 30, 5, 45], cacheCapacity = 50}
+	\item \textbf{Симулација корак по корак:}
+	\begin{enumerate}
+		\item Стиже \texttt{10}: Кеш \texttt{(10/50)}. Loss = \texttt{0}.
+		\item Стиже \texttt{20}: Кеш \texttt{(10, 20 / Sum: 30/50)}. Loss = \texttt{0}.
+		\item Стиже \texttt{30}: Премашује \texttt{50} (\texttt{30+30=60}). Избацује се најстарији \texttt{10}. Кеш \texttt{(20, 30 / Sum: 50/50)}. Loss = \texttt{10}.
+		\item Стиже \texttt{5}: Премашује \texttt{50} (\texttt{50+5=55}). Избацује се најстарији \texttt{20}. Кеш \texttt{(30, 5 / Sum: 35/50)}. Loss = \texttt{10 + 20 = 30}.
+		\item Стиже \texttt{45}: Премашује \texttt{50} (\texttt{35+45=80}). Избацује се најстарији \texttt{30}, па следећи \texttt{5}. Кеш \texttt{(45 / Sum: 45/50)}. Loss = \texttt{30 + 30 + 5 = 65}.
+	\end{enumerate}
+	\item \textbf{Излаз 1:} \texttt{65}
+\end{itemize}
+
+\sablon{Шаблон трећег поправног теста март 2026. група А}{2025/Mart/GrupaA/AISP2025_PopravniTest3_Test1_GrupaA.linq}

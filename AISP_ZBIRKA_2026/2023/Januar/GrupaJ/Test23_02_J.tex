@@ -1,0 +1,160 @@
+\rok{Јануар 2024.}{Ј}
+
+Други практични тест из Алгоритама и структура података
+
+Други практични тест одржан 13.01.2024.
+
+\zadatak{1}{Имплементација DFSVisit методе Depth-First-Search алгоритма}
+Написати имплементацију \texttt{DFSVisit} методе истоименог алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи креирати произвољан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив \texttt{DFS} методе.
+	\item У template-у је метода \texttt{private void DFSVisit(LinkedList.Node node, int nodeIndex)} која је основна метода за рекурзивно извршавање DFS алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Исписивање свих карактера који се понављају више од 2 пута}
+Написати алгоритам временске комплексности \(O(n)\) који ће из string-а који се прослеђује идентификовати карактере који се понављају више од 2 пута и исписати их у конзоли.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу која је дата у шаблону.
+	\item Имплементацију писати у оквиру закоментарисане методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void printAllRepeatings(string str)
+	\end{Verbatim}
+	\item Алгоритам реализовати тако да не постоји разлика између малих и великих карактера.
+	\item Како бисте string конвертовали у низ карактера са којим се може вршити манипулација, користити методу \texttt{ToCharArray()} по принципу: \texttt{str.ToCharArray()}.
+	\item Карактери се не морају експлицитно конвертовати у целобројни тип приликом убацивања у Hash табелу.
+	\item Редослед карактера приликом исписивања није битан.
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{"Algoritam"}
+	\item \textbf{Излаз 1:} \texttt{""}
+\end{itemize}
+(Не постоји карактер који се понавља више од 2 пута)
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{"Strukture podataka"}
+	\item \textbf{Излаз 2:} \texttt{"ta"}
+\end{itemize}
+(Карактери \texttt{"a"} и \texttt{"t"} се појављују по 3 пута)
+
+
+
+\zadatak{3}{Проналажење подстабала са непарним бројем парних чворова}
+У оквиру стандардне структуре класе \texttt{BinarySearchTree} написати имплементацију методе која ће омогућити испис корена подстабала која имају непаран број чворова са парном вредношћу.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item У оквиру класе \texttt{BinarySearchTree} креирати јавну методу са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void findOddEvensSubtree()
+	\end{Verbatim}
+	\item Из претходно креиране јавне методе треба да се позива приватна метода са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private int findOddEvensSubtree(Node curr)
+	\end{Verbatim}
+	\item Приватна метода треба да садржи имплементацију алгоритма којим ће се пребројавати чворови са парном вредношћу и за свако подстабло проверавати да ли је број чворова са парном вредношћу непаран. У случају да јесте, потребно је у конзоли исписати вредност корена овог подстабла.
+	\item Листове не треба посматрати.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} BST са слике 1
+	\item \textbf{Излаз 1:} 4
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[15
+		[12
+			[, phantom]
+			[14]
+		]
+		[19
+			[17]
+			[20]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} BST са слике 2
+	\item \textbf{Излаз 2:} 15, 12, 19
+\end{itemize}
+
+
+
+\sablon{Шаблон другог теста јануар 2024. група Ј}{2023/Januar/GrupaJ/AISP2023_Test2_GrupaJ.linq}

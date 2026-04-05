@@ -1,0 +1,85 @@
+\rok{Децембар 2025.}{F}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Quick Sort}
+Написати \textit{quickSort} методу Quick Sort алгоритма за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item У template-у се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+	\item У оквиру класе \texttt{QuickSort} написати имплементацију за методу:
+	\begin{Verbatim}[fontsize=\small]
+private static void quickSort(int[] arr, int lower, int upper)
+	\end{Verbatim}
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+\zadatak{2}{Проналажење најдуже подлисте парних бројева}
+Написати алгоритам који проналази најдужу подлисту парних елемената. Вредности из пронађене подлисте исписати у конзоли, или да таква подлиста не постоји.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе: \texttt{public static void findLargestEvenNumbersSubList()}.
+	\item Методу писати у оквиру класе \texttt{LinkedList}.
+\end{itemize}
+
+\textbf{Потпис методе:}
+\begin{Verbatim}[fontsize=\small]
+public static void findLargestEvenNumbersSubList()
+\end{Verbatim}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 0 -> 6 -> 8 -> 4} \\
+	      \textbf{Излаз:} \texttt{0 6 8 4}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 5 -> 3} \\
+	      \textbf{Излаз:} \texttt{Не постоји подлиста парних бројева}
+\end{itemize}
+
+\zadatak{3}{Hot Potato Game -- Odd and Even Problem}
+\textbf{Проблем:} У класичној игри "Врући кромпир", играчи у кругу пребацују кромпир док музика свира. Када музика стане, играч који држи кромпир испада. У нашој напредној варијанти, број пролазака кромпира се динамички мења током игре.
+
+\textbf{Правила игре:}
+\begin{enumerate}
+	\item Има $n$ играча нумерисаних од 1 до $n$.
+	\item Почетни број пролазака је $K$.
+	\item Правило елиминације: У сваком кругу, кромпир се проследи $K$ пута. Играч код кога се кромпир нађе након $K$-тог проласка испада.
+	\item Динамичка промена $K$: Након што играч испадне, нови број пролазака ($K_{novi}$) за следећи круг се рачуна на основу ID-а елиминисаног играча:
+	\begin{itemize}
+		\item Ако је ID испалог играча паран број: $K_{novi} = K_{stari} + 2$
+		\item Ако је ID испалог играча непаран број: $K_{novi} = K_{stari} - 1$
+	\end{itemize}
+	\item Ограничења за $K$:
+	\begin{itemize}
+		\item Ако $K$ постане мањи од 1, поставља се на вредност почетног $K$ (из параметра методе).
+		\item Пре него што почне нови круг, ако је $K$ већи од броја преосталих играча, узима се остатак при дељењу:
+		$$
+		K = (K \% \text{broj\_preostalih}) + 1
+		$$
+	\end{itemize}
+	\item Игра се наставља док не остане само један играч -- победник.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{enumerate}
+	\item Задатак решавати у оквиру методе:
+	\begin{Verbatim}[fontsize=\small]
+public int PlayHotPotato(int totalPlayers, int initialPasses)
+	\end{Verbatim}
+	\item Морате користити Queue за представљање круга играча.
+	\item Имплементирати динамичко рачунање пролазака по датој формули.
+	\item Резултат извршавања алгоритма треба да буде редни број победника у игри.
+\end{enumerate}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{totalPlayers = 4, initialPasses = 2} \\
+	      \textbf{Излаз 1:} \texttt{expectedWinner = 3}
+	\item \textbf{Улаз 2:} \texttt{totalPlayers = 6, initialPasses = 1} \\
+	      \textbf{Излаз 2:} \texttt{expectedWinner = 6}
+\end{itemize}
+
+\sablon{Шаблон првог теста децембар 2025. група F}{2025/Decembar/GrupaF/AISP2025_Test1_GrupaF.linq}

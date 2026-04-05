@@ -1,0 +1,148 @@
+\rok{Фебруар 2026.}{А}
+
+Други поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 19.02.2026.
+
+\zadatak{1}{Конверзија листе у матрицу суседства}
+Написати алгоритам који ће вршити директну конверзију листе суседства у матрицу суседства. Алгоритам као улазни параметар треба да прихвати динамички низ чворова, а треба да резултује креираном матрицом.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item У template-у је закоментарисана метода \texttt{ConvertAdjacencyListToAdjacencyMatrix} која треба да садржи имплементацију конверзије листе у матрицу суседства.
+	\item У Main методи обезбедити начин за тестирање и проверу нове функционалности.
+\end{itemize}
+
+\zadatak{2}{Сви карактери првог присутни у другом}
+Написати методу која прима два string-а и проверава да ли се сви јединствени карактери из првог string-а појављују барем једном у другом string-у (без обзира на број појављивања).
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу из шаблона за чување броја појављивања сваког карактера.
+	\item Имплементацију писати у методи:
+	\begin{Verbatim}[fontsize=\small]
+public static bool areAllCharsPresent(string str1, string str2)
+	\end{Verbatim}
+	\item Игнорисати разлику између малих и великих слова.
+	\item Уколико једна реч има више истих слова, довољно је постојање само једног карактера у другој речи. (Погледај пример 1)
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str1 = "Aba", str2 = "Balkon"}
+	\item \textbf{Излаз 1:} \texttt{true} (Карактери \texttt{"a"} и \texttt{"b"} постоје у другом string-у)
+	\item \textbf{Улаз 2:} \texttt{str1 = "Kod", str2 = "Algoritam"}
+	\item \textbf{Излаз 2:} \texttt{false} (Карактери \texttt{"d"} и \texttt{"k"} не постоје у другом string-у)
+\end{itemize}
+
+\zadatak{3}{Провера "Путања раста" (Root-to-Leaf Max Path)}
+У оквиру класе \texttt{BinarySearchTree} написати методу која проверава да ли постоји путања од корена до листа на којој је сваки чвор строго већи од збира свих својих предака на тој путањи.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода:
+	\begin{Verbatim}[fontsize=\small]
+public bool existsSuperIncreasingPath()
+	\end{Verbatim}
+	\item Приватна метода:
+	\begin{Verbatim}[fontsize=\small]
+private bool checkSuperIncreasingPath(Node current, int currentSum)
+	\end{Verbatim}
+	\item Подразумева се да стабло има барем два чвора.
+	\item Алгоритам ОБАВЕЗНО писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} BST са слике 1
+	\item \textbf{Излаз 1:} \texttt{false} (11 није веће од 9 + 8)
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} BST са слике 2
+	\item \textbf{Излаз 2:} \texttt{false} (29 није веће од 10 + 20)
+\end{itemize}
+
+\sablon{Шаблон другог поправног теста фебруар 2026. група А}{2025/Februar/GrupaA/AISP2025_PopravniTest2_Test2_GrupaA.linq}

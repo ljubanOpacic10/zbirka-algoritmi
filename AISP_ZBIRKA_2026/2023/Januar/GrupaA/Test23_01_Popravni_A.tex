@@ -1,0 +1,70 @@
+\rok{Јануар 2024.}{А - Поправни тест првог теста}
+
+Први поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 19.01.2024.
+
+\zadatak{1}{Брисање елемената из реда (Queue Dequeue)}
+Написати методу која имплементира стандардан начин за брисање елемената из реда.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Алгоритам написати у оквиру закоментарисане методе \texttt{dequeue?(int value)}.
+	\item Поменута метода налази се у оквиру класе \texttt{Queue} која се налази у придруженом template-у.
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Непаран број парних вредности у редовима матрице}
+Написати алгоритам који као улаз има матрицу бројева $N \times M$, број редова и број колона те матрице, и који проверава да ли се у реду елемената налази непаран број парних вредности. Алгоритам враћа низ са онолико елемената колико је редова у матрици, тако да је на $i$-том индексу овог низа јединица уколико је у $i$-том реду матрице непаран број парних вредности, у супротном на $i$-том индексу излазног низа треба бити нула.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Имплементирати алгоритам.
+	\item У Main методи обезбедити тестирање, позивом методе са параметрима који су дати у примерима.
+	\item 0 се посматра одвојено - није ни паран, ни непаран број.
+\end{itemize}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static int[] checkOddEvenRows(int[,] matrix, int rows, int cols)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} $\begin{bmatrix} 2 & 0 & 4 & 0 \\ 3 & 5 & 7 & 9 \\ 0 & 1 & 1 & 2 \\ 1 & 2 & 3 & 4 \end{bmatrix}$, 4, 4
+	\item \textbf{Излаз 1:} \texttt{[0, 0, 1, 0]}
+	\item \textbf{Улаз 2:} $\begin{bmatrix} 2 & 4 & 4 \\ 1 & 4 & 3 \\ 1 & 1 & 2 \end{bmatrix}$, 3, 3
+	\item \textbf{Излаз 2:} \texttt{[1, 1, 1]}
+\end{itemize}
+
+
+
+\zadatak{3}{Проналажење најдуже секвенце растућих вредности}
+Написати алгоритам који враћа најдужу секвенцу (низ) те једноструко спрегнуте листе у којој су вредности у растућем поретку. Уколико не постоји секвенца са растућим поретком вратити \texttt{null}.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static int[]? findLargestAscendingSequence(LinkedList list)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 2 -> 6 -> 0 -> 3}
+	\item \textbf{Излаз:} \texttt{[1, 2, 6]}
+	\item \textbf{Улаз:} \texttt{LinkedList: 2 -> 0 -> 6 -> 8 -> 4 -> 2 -> 3 -> 1}
+	\item \textbf{Излаз:} \texttt{[0, 6, 8]}
+	\item \textbf{Улаз:} \texttt{LinkedList: 6 -> 5 -> 4 -> 3}
+	\item \textbf{Излаз:} \texttt{null}
+\end{itemize}
+
+
+
+\sablon{Шаблон поправног за први тест јануар 2024. група А}{2023/Januar/GrupaA/AISP2023_PopravniTest1_GrupaA.linq}

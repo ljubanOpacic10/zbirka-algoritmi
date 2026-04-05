@@ -1,0 +1,152 @@
+\rok{Март 2026.}{А}
+
+Трећи поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 06.03.2026.
+
+\zadatak{1}{Завршавање имплементације BFS алгоритма}
+Основна метода BFS алгоритма није потпуна. Допунити имплементацију ове методе која треба да омогући комплетно извршавање овог алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи креирати произвољан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив BFS методе.
+	\item У template-у је закоментарисана метода:
+	\begin{Verbatim}[fontsize=\small]
+public void BFS(int startVertex)
+	\end{Verbatim}
+\end{itemize}
+
+\zadatak{2}{Заједнички карактери са провером позиције (Strict Intersection)}
+Написати методу која прима два stringa. Из првог stringa треба исписати само оне карактере који се појављују у другом stringu, али под условом да се налазе на истом индексу (позицији) у оба stringa бар једном. Сваки такав карактер исписати само једном.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу из шаблона за чување броја појављивања сваког карактера.
+	\item Имплементацију писати у методи:
+	\begin{Verbatim}[fontsize=\small]
+public static void printCommonAtSameIndex(string str, string pattern)
+	\end{Verbatim}
+	\item Игнорисати разлику између малих и великих слова.
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str = "bAnana", pattern = "canaba"}
+	\item \textbf{Излаз 1:} \texttt{"an"} -- само карактери \texttt{"a"}, \texttt{"n"} и \texttt{"a"} се налазе на истој позицији.
+	\item \textbf{Улаз 2:} \texttt{str1 = "Kod", str2 = "Algoritam"}
+	\item \textbf{Излаз 2:} \texttt{"Nema takvih karaktera"}
+\end{itemize}
+
+\zadatak{3}{Сума елемената у опсегу [k1, k2]}
+Написати методу која израчунава и враћа суму свих вредности из BST стабла које се налазе у затвореном опсегу између \texttt{k1} и \texttt{k2}.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода: \texttt{public int sumRange(int k1, int k2)}.
+	\item Приватна метода: \texttt{private int sumRange(Node current, int k1, int k2)}.
+	\item Подразумева се да стабло има барем два чвора.
+	\item Не улазити у подстабла која су сигурно ван опсега.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Потписи метода:}
+\begin{Verbatim}[fontsize=\small]
+public int sumRange(int k1, int k2)
+private int sumRange(Node current, int k1, int k2)
+\end{Verbatim}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{k1 = 5, k2 = 10}
+	\item \textbf{Излаз 1:} 17 (8 + 9)
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{k1 = 5, k2 = 14}
+	\item \textbf{Излаз 2:} 37 (6 + 9 + 10 + 12)
+\end{itemize}
+
+\sablon{Шаблон трећег поправног теста март 2026. група А}{2025/Mart/GrupaA/AISP2025_PopravniTest3_Test2_GrupaA.linq}

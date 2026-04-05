@@ -1,0 +1,82 @@
+\rok{Јануар 2026.}{B}
+
+Први поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 29.01.2026.
+
+\zadatak{1}{Insertion Sort}
+Написати методу \texttt{sort} Insertion Sort алгоритма за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item У template-у се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+	\item У оквиру класе \texttt{InsertionSort} написати имплементацију за методу:
+	\begin{Verbatim}[fontsize=\small]
+private static void sort(long[] arr)
+	\end{Verbatim}
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+\zadatak{2}{Проналажење "Балансне Тачке" листе}
+Потребно је имплементирати методу која проналази вредност првог чвора у листи који представља "балансну тачку". Чвор је балансна тачка ако је сума свих елемената са његове леве стране једнака суми свих елемената са његове десне стране.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Ако такав чвор не постоји, метода треба да врати \texttt{-1}.
+	\item Задатак се мора решити у линеарном времену $O(n)$.
+	\item Сматрати да је сума "празне стране" (код првог или последњег чвора) једнака 0.
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\small]
+public int findBalancePoint()
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{4 -> 3 -> 6 -> 7}
+	\item \textbf{Излаз 1:} \texttt{6}
+	\item \textbf{Улаз 2:} \texttt{2 -> 3 -> 4 -> 4}
+	\item \textbf{Излаз 2:} \texttt{-1}
+\end{itemize}
+
+\zadatak{3}{Чишћење мрежног бафера (Network Buffer Scrubber)}
+Замислите мрежни бафер (Queue) који прима пакете података (позитивни бројеви) који чекају на обраду. Повремено у систем улази "Antisignal" или "шум" (негативан број).
+
+\textbf{Правила интеракције:}
+\begin{enumerate}
+	\item Када стигне Antisignal (негативан број), он напада пакет који је тренутно први у реду (Front).
+	\item Судар:
+	\begin{enumerate}[a.]
+		\item Ако је пакет на почетку реда мањи од апсолутне вредности antisignala, пакет је уништен, а antisignal наставља да уништава следећи пакет у реду са преосталом јачином.
+		\item Ако је пакет исти као апсолутна вредност antisignala, оба нестају.
+		\item Ако је пакет већи од апсолутне вредности antisignala, пакет преживљава, али његова вредност се смањује за јачину antisignala. Квака: пошто је пакет "обрађен" овим сударом, он се пребацује на крај реда (Back) како би уступио место другим пакетима.
+	\end{enumerate}
+	\item Ако antisignal уништи све пакете у реду и још увек има преосталу јачину, он сам постаје пакет (негативне вредности) и улази у ред на крај.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Временска сложеност: $O(n)$.
+	\item Захтевани потпис методе:
+	\begin{Verbatim}[fontsize=\small]
+public int[] ScrutinizeBuffer(int[] data)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1} (несортирани низ целих бројева): \texttt{[10, 5, 20, -25]}
+	\item \textbf{Кораци:}
+	\begin{itemize}
+		\item \texttt{10, 5, 20} улазе редом: Queue: \texttt{[10, 5, 20]}
+		\item Стиже \texttt{-25} (noise = 25).
+		\item Напада \texttt{10} (front): \texttt{10} је мањи, \texttt{10} нестаје. Noise остаје \texttt{15}.
+		\item Напада \texttt{5} (front): \texttt{5} је мањи, \texttt{5} нестаје. Noise остаје \texttt{10}.
+		\item Напада \texttt{20} (front): \texttt{20} је већи.
+	\end{itemize}
+	\item \textbf{Излаз 1:} \texttt{[10]}
+\end{itemize}
+
+\sablon{Шаблон првог поправног теста јануар 2026. група Б}{2025/Januar/GrupaB/AISP2025_PopravniTest1_Test1_GrupaB.linq}

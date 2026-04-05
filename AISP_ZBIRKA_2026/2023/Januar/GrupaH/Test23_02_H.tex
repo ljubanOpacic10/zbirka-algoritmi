@@ -1,0 +1,170 @@
+\rok{Јануар 2024.}{H}
+
+Други практични тест из Алгоритама и структура података
+
+Други практични тест одржан 12.01.2024.
+
+\zadatak{1}{Конверзија матрице у листу суседства}
+Написати алгоритам који ће вршити директну конверзију матрице суседства у листу суседства. Алгоритам као улазни параметар треба да прихвати матрицу, а треба да резултује креираним динамичким низом чворова.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи креирати произвољан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив \texttt{convertMatrixToList} методе.
+	\item У template-у је закоментарисана метода \texttt{convertMatrixToList} која треба да садржи имплементацију конверзије листе у матрицу суседства.
+\end{itemize}
+
+
+
+\zadatak{2}{Исписивање свих непарних вредности листова}
+У оквиру стандардне структуре класе \texttt{AVL} написати имплементацију методе која ће омогућити проналажење и исписивање чворова на позицији листова са непарном вредношћу.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item У оквиру класе \texttt{AVL} креирати јавну методу са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void printOddLeaves()
+	\end{Verbatim}
+	\item Из претходно креиране јавне методе треба да се позива приватна метода са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private Node printOddLeavesAVL(Node curr)
+	\end{Verbatim}
+	\item Приватна метода треба да садржи имплементацију алгоритма којим ће се омогућити пролазак кроз стабло од корена ка листовима и њихово исписивање уколико им је непарна вредност.
+	\item Листом се класификује сваки чвор који нема ниједно дете.
+	\item Може се креирати помоћна променљива на нивоу класе \texttt{AVL} која ће помоћи у пребројавању.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{AVL}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример AVL-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} AVL са слике 1
+	\item \textbf{Излаз 1:} 3, 5, 11
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример AVL-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} AVL са слике 2
+	\item \textbf{Излаз 2:} 3, 5, 9, 27
+\end{itemize}
+
+
+
+\zadatak{3}{Провера могућности мутације подсеквенце}
+Написати алгоритам који проверава да ли је могуће мутирати секвенцу. Алгоритам као параметре добија секвенцу за коју се проверава да ли је могућа мутација, подсеквенцу коју треба мутирати и вредност мутације. Секвенцу је могуће мутирати уколико је естимирана сличност секвенце пре мутације са секвенцом након мутације бар 0,5.
+Алгоритам написати уз претпоставку да се тражена подсеквенца коју је потребно мутирати појављује највише једанпут у секвенци.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи обезбедити тестирање, позивом методе са параметрима који су дати у примерима.
+	\item Користити \texttt{search} методу класе \texttt{KarpRabinAlgorithm} и класе \texttt{MinHash} и \texttt{Jaccard}, које су дате у шаблону.
+	\item Имплементацију писати у оквиру закоментарисане методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static bool checkIfMutationIsPossible(string str, string mutatingSubsequence, string mutationSubsequence)
+	\end{Verbatim}
+	\item Приликом креирања \texttt{MinHash} објекта, за вредности параметара \texttt{universeSize} и \texttt{numHashFunctions} прослеђивати вредности 12 и 4.
+	\item Параметар \texttt{q} функције \texttt{search} поставити на \texttt{mutatingSubsequence.Length+1}.
+	\item Дозвољено је изменити повратни тип методе \texttt{search} (нпр. уместо \texttt{void} имати \texttt{List<int>}).
+\end{itemize}
+
+\textbf{Напомене које могу бити од помоћи приликом решавања задатка:}
+\begin{itemize}
+	\item За конверзију string-а у низ карактера користити \texttt{ToCharArray()} по принципу: \texttt{str.ToCharArray()}.
+	\item За конверзију низа карактера у string користити \texttt{new string(char[] arrayOfChars)} по принципу: \texttt{new string(charArray)}.
+	\item Карактере није потребно експлицитно конвертовати у целобројни тип приликом убацивања у \texttt{List<uint>} структуру.
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{"ACGTWMAB", "CGT", "GTB"}
+	\item \textbf{Излаз 1:} \texttt{True}
+	\item \textbf{Образложење:} Мутацијом се добија секвенца \texttt{AGTBWMAB}, сличност секвенци \texttt{ACGTWMAB} и \texttt{AGTBWMAB} је преко 0.5.
+	\item \textbf{Улаз 2:} \texttt{"AMCGT", "CGT", "HBK"}
+	\item \textbf{Излаз 2:} \texttt{False}
+	\item \textbf{Образложење:} Мутацијом се добија секвенца \texttt{AMHBK}, сличност секвенци \texttt{AMCGT} и \texttt{AMHBK} није преко 0.5.
+\end{itemize}
+
+
+
+\sablon{Шаблон другог теста јануар 2024. група H}{2023/Januar/GrupaH/AISP2023_Test2_GrupaH.linq}

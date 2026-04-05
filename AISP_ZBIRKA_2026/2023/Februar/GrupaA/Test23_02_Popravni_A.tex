@@ -1,0 +1,164 @@
+\rok{Фебруар 2024.}{А - Поправни тест другог теста}
+
+Други поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 30.01.2024.
+
+\zadatak{1}{Имплементација методе за изграђивање најкраће путање}
+Написати имплементацију методе која треба да омогући креирање тренутно најкраће путање у оквиру Дајкстриног алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item У template-у је закоментарисана метода:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private static void BuildShortestPaths(int[] vertices, int[] previousVertices, HashSet<int>[] shortestPaths)
+	\end{Verbatim}
+	\item У Main методи обезбедити начин за тестирање и проверу нове функционалности.
+\end{itemize}
+
+
+
+\zadatak{2}{Дуплирање понављајућих карактера}
+Написати алгоритам временске комплексности $O(n)$ који ће из string-а који се прослеђује идентификовати карактере који се понављају и дуплирати их у оквиру улазног string-а, те тако измењени string исписати у конзоли.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу која је дата у шаблону.
+	\item Имплементацију писати у оквиру закоментарисане методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static string addMoreDuplicates(string str)
+	\end{Verbatim}
+	\item Алгоритам реализовати тако да постоји разлика између малих и великих карактера.
+	\item За конверзију string-а у низ карактера користити методу \texttt{ToCharArray()} по принципу: \texttt{str.ToCharArray()}.
+	\item Карактере није потребно експлицитно конвертовати у целобројни тип приликом убацивања у Hash табелу, али приликом каснијег исписивања користити експлицитно кастовање \texttt{(char)}.
+	\item Редослед карактера приликом исписивања није битан.
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{"Algoritam"}
+	\item \textbf{Излаз 1:} \texttt{"Algoritam"} (ниједан карактер се не појављује више пута)
+	\item \textbf{Улаз 2:} \texttt{"STRUKTURE podataka"}
+	\item \textbf{Излаз 2:} \texttt{"STTRRUUKTTUURRE podaataakaa"} (карактери \texttt{a}, \texttt{R}, \texttt{U} и \texttt{T} се појављују више пута)
+\end{itemize}
+
+
+
+\zadatak{3}{Провера путање са секвенцом чворова}
+У оквиру стандардне структуре класе \texttt{AVL} написати имплементацију методе која ће омогућити проверу постојања путање од корена до листа која се састоји из секвенце чворова одређене низом.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Сматра се да путања са секвенцом чворова постоји уколико на путањи од корена до листа постоји секвенца чворова који имају вредности које одговарају вредностима у датом низу, и налазе се у редоследу који је одређен поретком у низу, при чему може бити додатних чворова на путањи.
+	\item У оквиру класе \texttt{AVL} креирати јавну методу са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public bool ckeckIfPathExists(int[] arr)
+	\end{Verbatim}
+	\item Из претходно креиране јавне методе треба да се позива приватна метода са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private bool ckeckIfPathExists(Node curr, int[] arr, int index)
+	\end{Verbatim}
+	\item Приватна метода треба да садржи имплементацију алгоритма којим ће се омогућити провера секвенце вредности чворова на путањама од корена до листова.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{AVL}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример AVL-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1 за AVL са слике 1:} \texttt{[4, 2, 3]}
+	\item \textbf{Излаз:} true
+	\item \textbf{Улаз 2 за AVL са слике 1:} \texttt{[8, 9, 11, 13]}
+	\item \textbf{Излаз:} false
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример AVL-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1 за AVL са слике 2:} \texttt{[10, 12, 13]}
+	\item \textbf{Излаз:} true
+	\item \textbf{Улаз 2 за AVL са слике 2:} \texttt{[19, 17, 16]}
+	\item \textbf{Излаз:} false
+\end{itemize}
+
+
+
+\sablon{Шаблон поправног другог теста фебруар 2024. група А}{2023/Februar/GrupaA/AISP2023_PopravniFebruar_Test2_GrupaA.linq}

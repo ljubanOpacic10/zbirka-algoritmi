@@ -1,0 +1,169 @@
+\rok{Јануар 2024.}{F}
+
+Други практични тест из Алгоритама и структура података
+
+Други практични тест одржан 10.01.2024.
+
+\zadatak{1}{Завршавање имплементације BFS алгоритма}
+Основна метода BFS алгоритма није потпуна. Допунити имплементацију ове методе која треба да омогући комплетно извршавање овог алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи креирати произвољан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив BFS методе.
+	\item У template-у је закоментарисана метода:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void BFS(int startVertex)
+	\end{Verbatim}
+\end{itemize}
+
+
+
+\zadatak{2}{Рачунање суме чворова који нису на позицији листова}
+У оквиру стандардне структуре класе \texttt{BST} написати имплементацију методе која ће омогућити исписивање свих чворова који се налазе на позицији листова.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item У оквиру класе \texttt{BST} креирати јавну методу са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void sumNonLeaves()
+	\end{Verbatim}
+	\item Из претходно креиране јавне методе треба да се позива приватна метода са потписом:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+private Node sumNonLeavesBST(Node curr)
+	\end{Verbatim}
+	\item Приватна метода треба да садржи имплементацију алгоритма којим ће се омогућити пролазак кроз стабло од корена ка листовима и њихово сумирање.
+	\item Листом се класификује сваки чвор који нема ниједно дете.
+	\item Може се креирати помоћна променљива на нивоу класе \texttt{BST} која ће помоћи у пребројавању.
+	\item Алгоритам \textbf{ОБАВЕЗНО} писати у оквиру класе \texttt{BST}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} BST са слике 1
+	\item \textbf{Излаз 1:} 23 (8 + 9 + 4 + 2)
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-а.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} BST са слике 2
+	\item \textbf{Излаз 2:} 83 (10 + 4 + 20 + 2 + 6 + 12 + 29)
+\end{itemize}
+
+
+
+\zadatak{3}{Естимирана сличност секвенци након k карактера}
+Написати алгоритам који рачуна естимирану сличност секвенци након прослеђених \texttt{k} карактера. Алгоритам као параметре добија секвенце и број \texttt{k} који означава почетак subsekvenci чију сличност треба естимирати. Алгоритам имплементирати уз претпоставку да је број \texttt{k} сигурно мањи од дужина секвенци које се естимирају.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи обезбедити тестирање, позивом методе са параметрима који су дати у примерима.
+	\item Користити \texttt{search} методу класе \texttt{KarpRabinAlgorithm} и класе \texttt{MinHash} и \texttt{Jaccard}, које су дате у шаблону.
+	\item Имплементацију писати у оквиру закоментарисане методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static double percentOfSimilarityAfterK(string str1, string str2, int k)
+	\end{Verbatim}
+	\item Приликом креирања \texttt{MinHash} објекта, за вредности параметара \texttt{universeSize} и \texttt{numHashFunctions} прослеђивати вредности 12 и 4.
+	\item Параметар \texttt{q} функције \texttt{search} поставити на \texttt{substr.Length+1}.
+	\item Дозвољено је изменити повратни тип методе \texttt{search} (нпр. уместо \texttt{void} имати \texttt{List<int>}).
+\end{itemize}
+
+\textbf{Напомене које могу бити од помоћи приликом решавања задатка:}
+\begin{itemize}
+	\item За конверзију string-а у низ карактера користити \texttt{ToCharArray()} по принципу: \texttt{str.ToCharArray()}.
+	\item За конверзију низа карактера у string користити \texttt{new string(char[] arrayOfChars)} по принципу: \texttt{new string(charArray)}.
+	\item Карактере није потребно експлицитно конвертовати у целобројни тип приликом убацивања у \texttt{List<uint>} структуру.
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{"ACCCBBWMKCCCBCAC", "HRCCMKCPSAAKYCRBHVB", 10}
+	\item \textbf{Излаз:} 0,2
+	\item \textbf{Тумачење:} Естимирана сличност subsekvenci \texttt{CCBCAC} и \texttt{AKYCRBHVB} је 0,2.
+\end{itemize}
+
+
+
+\sablon{Шаблон другог теста јануар 2024. група F}{2023/Januar/GrupaF/AISP2023_Test2_GrupaF.linq}

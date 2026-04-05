@@ -1,0 +1,148 @@
+\rok{Фебруар 2026.}{Ф}
+
+Други практични тест из Алгоритама и структура податак
+
+Први практични тест одржан 13.02.2026.
+
+\zadatak{1}{Имплементација DFSVisit методе Depth-First-Search алгоритма}
+Написати имплементацију DFSVisit методе истоимене алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item a) Написати алгоритам.
+	\item b) У Main методи креирати произволан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив DFS методе.
+	\item У template-у је метода \texttt{private void DFSVisit(LinkedList.Node node, int nodeIndex)} која је основна метода за рекурзивно извршавање DFS алгоритма.
+\end{itemize}
+
+\zadatak{2}{Карактери са тачним бројем појављивања}
+Написати методу која прима string str и цео број k. Метода треба да исписе все карактере из string-а који се у њему појављују тачно k пута, користећи хеш табелу ради ефикасности.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу за чување броја појављивања (као кључ је карактер, као вредност је број).
+	\item Имплементацију писати у методи:
+	\begin{Verbatim}[fontsize=\small]
+public static void printCharsWithCountK(string str, int k)
+	\end{Verbatim}
+	\item Разлика између малих и великих слова постоји.
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str = "Algoritmi i strukture", k = 3}
+	\item \textbf{Излаз 1:} \texttt{"i"}
+	\item \textbf{Улаз 2:} \texttt{str = "Vetar", k = 2}
+	\item \textbf{Излаз 2:} \texttt{"Nijedan karakter se ne pojavljuje 2 puta"}
+\end{itemize}
+
+\zadatak{3}{Сума листова већа од X}
+Написати методу која проверава да ли је сума свих листова у стаблу већа од заданте вредности threshold.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода:
+	\begin{Verbatim}[fontsize=\small]
+public bool isLeafSumGreater(int threshold)
+	\end{Verbatim}
+	\item Приватна метода:
+	\begin{Verbatim}[fontsize=\small]
+private int getLeafSum(Node current)
+	\end{Verbatim}
+	\item Подразумева се да стабло има барем два чвора.
+	\item Алгоритам ОБАВЕЗНО писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{threshold = 20}
+	\item \textbf{Излаз 1:} \texttt{false (suma listova = 19 (3 + 5 + 11))}
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{threshold = 20}
+	\item \textbf{Излаз 2:} \texttt{true (suma listova = 58 (3 + 5 + 9 + 14 + 27))}
+\end{itemize}
+
+\sablon{Шаблон другог теста фебруар 2026. група Ф}{2025/Februar/GrupaF/AISP2025_Test2_GrupaF.linq}

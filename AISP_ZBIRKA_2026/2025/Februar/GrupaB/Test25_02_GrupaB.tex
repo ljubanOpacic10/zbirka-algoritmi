@@ -1,8 +1,8 @@
 \rok{Фебруар 2026.}{B}
 
-Други поправни тест из Алгоритама и структура података
+Други практични тест из Алгоритама и структура података
 
-Први практични тест одржан 19.02.2026.
+Први практични тест одржан 10.02.2026.
 
 \zadatak{1}{Конверзија матрице у листу суседства}
 Написати алгоритам који ће вршити директну конверзију матрице суседства у листу суседства. Алгоритам као улазни параметар треба да прихвати матрицу, а треба да резултује креираним динамичким низом листи.
@@ -13,38 +13,38 @@
 	\item У Main методи обезбедити начин за тестирање и проверу нове функционалности.
 \end{itemize}
 
-\zadatak{2}{Карактер са најдужим низом без понављања}
-Написати методу која прима string и проналази дужину најдужег подstring-а који се састоји од потпуно јединствених карактера (без иједног понављања).
+\zadatak{2}{Уклањање свих карактера који се појављују у другом string-у}
+Написати методу која прима два string-а. Из првог string-а треба уклонити све карактере који се налазе у другом string-у користећи хеш табелу ради ефикасности.
 
 \textbf{Додатни захтеви за решавање задатка:}
 \begin{itemize}
 	\item Користити Hash табелу из шаблона за чување броја појављивања сваког карактера.
 	\item Имплементацију писати у методи:
 	\begin{Verbatim}[fontsize=\small]
-public static int LengthOfLongestUnique(string str)
+public static void removePattern(string str, string pattern)
 	\end{Verbatim}
-	\item Временска комплексност треба да буде $O(n)$.
+	\item Временска комплексност треба да буде $O(n + m)$ где су „n“ и „m“ дужине прослеђених подstring-ова.
 	\item Игнорисати разлику између малих и великих слова.
 \end{itemize}
 
 \textbf{Пример:}
 \begin{itemize}
-	\item \textbf{Улаз 1:} \texttt{str = "abcabcbb"}
-	\item \textbf{Излаз 1:} \texttt{3} (то су подstring-ови: \texttt{"abc"}, \texttt{"bca"}, \texttt{"cab"})
+	\item \textbf{Улаз 1:} \texttt{str = "Algoritmi i strukture", pattern = "aeiou"}
+	\item \textbf{Излаз 1:} \texttt{"lgrtm  strktr"} (уклоњени сви самогласници)
 \end{itemize}
 
-\zadatak{3}{Провера максималне дубине листа (Max Leaf Depth)}
-У оквиру класе \texttt{BinarySearchTree} написати методу која проверава да ли у стаблу постоји иједан лист који се налази на дубини већој од задате вредности \texttt{k}.
+\zadatak{3}{Провера постојања путање са одређеном сумом}
+Написати методу која проверава да ли у стаблу постоји путања од корена до било ког листа таква да сума вредности чворова на тој путањи износи тачно \texttt{targetSum}.
 
 \textbf{Додатни захтеви за решавање задатка:}
 \begin{itemize}
 	\item Јавна метода:
 	\begin{Verbatim}[fontsize=\small]
-public bool hasLeafDeeperThan(int k)
+public boolean hasPathSum(int targetSum)
 	\end{Verbatim}
 	\item Приватна метода:
 	\begin{Verbatim}[fontsize=\small]
-private bool hasLeafDeeperThan (Node current, int level, int k)
+private boolean hasPathSum(Node current, int currentSum, int targetSum)
 	\end{Verbatim}
 	\item Подразумева се да стабло има барем два чвора.
 	\item Алгоритам ОБАВЕЗНО писати у оквиру класе \texttt{BinarySearchTree}.
@@ -89,8 +89,8 @@ for tree={
 \end{center}
 
 \begin{itemize}
-	\item \textbf{Улаз 1:} \texttt{k = 3}
-	\item \textbf{Излаз 1:} \texttt{true} (\texttt{"3"} се налази на тој дубини)
+	\item \textbf{Улаз 1:} \texttt{targetSum = 17}
+	\item \textbf{Излаз 1:} \texttt{true} ($8 - 4 - 5$)
 \end{itemize}
 
 \begin{center}
@@ -139,8 +139,8 @@ for tree={
 \end{center}
 
 \begin{itemize}
-	\item \textbf{Улаз 2:} \texttt{k = 2}
-	\item \textbf{Излаз 2:} \texttt{false} (ниједан лист се не налази на тој дубини)
+	\item \textbf{Улаз 2:} \texttt{targetSum = 99}
+	\item \textbf{Излаз 2:} \texttt{false}
 \end{itemize}
 
-\sablon{Шаблон другог поправног теста фебруар 2026. група Б}{2025/Februar/GrupaB/AISP2025_PopravniTest2_Test2_GrupaB.linq}
+\sablon{Шаблон другог теста фебруар 2026. група Б}{2025/Februar/GrupaB/AISP2025_Test2_GrupaB.linq}

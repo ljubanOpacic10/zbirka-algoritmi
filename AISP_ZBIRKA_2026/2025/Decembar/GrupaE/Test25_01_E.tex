@@ -1,0 +1,76 @@
+\rok{Децембар 2025.}{E}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Heap Sort}
+Написати Heap Sort алгоритам за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item За имплементацију алгоритма користити класу \texttt{Heap} која се налази у template-у.
+	\item У template-у се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+	\item Креирати класу \texttt{HeapSort} и у оквиру ње генерисати методу:
+	\begin{Verbatim}[fontsize=\small]
+public static void sort(long[] arr)
+	\end{Verbatim}
+\end{itemize}
+
+\zadatak{2}{Кумулативна сума вредности левих суседа}
+Написати алгоритам који модификује листу тако што вредност чвора замењује вредношћу суме свих елемената који се у листи налазе са његове леве стране.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе: \texttt{public void calculateCumulativeSum()}.
+	\item Методу писати у оквиру класе \texttt{LinkedList}.
+\end{itemize}
+
+\textbf{Потпис методе:}
+\begin{Verbatim}[fontsize=\small]
+public void calculateCumulativeSum()
+\end{Verbatim}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 0 -> 6 -> 8 -> 4} \\
+	      \textbf{Излаз:} \texttt{0 -> 1 -> 1 -> 7 -> 15}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 2 -> 4 -> 0 -> 6} \\
+	      \textbf{Излаз:} \texttt{0 -> 1 -> 3 -> 7 -> 7}
+\end{itemize}
+
+\zadatak{3}{Hot Potato Game}
+\textbf{Проблем:} У класичној игри "Врући кромпир", играчи у кругу пребацују кромпир док музика свира. Када музика стане, играч који држи кромпир испада. У нашој напредној варијанти, број пролазака кромпира се динамички мења током игре.
+
+\textbf{Правила игре:}
+\begin{enumerate}
+	\item Има $n$ играча нумерисаних од 1 до $n$.
+	\item Почетни број пролазака је $K$.
+	\item Након сваког испадања играча, број пролазака за следећи круг се мења по формули:
+	$$
+	\text{нови\_проласци} = (\text{стари\_проласци} \times 2) \% (\text{преостали\_играчи} + 1)
+	$$
+	\item Ако је резултат формуле 0, тада је \texttt{novi\_prolasci = preostali\_igraci}.
+	\item Играчи се елиминишу док не остане само један - победник.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{enumerate}
+	\item Задатак решавати у оквиру методе:
+	\begin{Verbatim}[fontsize=\small]
+public int PlayHotPotato(int totalPlayers, int initialPasses)
+	\end{Verbatim}
+	\item Морате користити Queue за представљање круга играча.
+	\item Имплементирати динамичко рачунање пролазака по датој формули.
+	\item Резултат извршавања алгоритма треба да буде редни број победника у игри.
+\end{enumerate}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{totalPlayers = 7, initialPasses = 3} \\
+	      \textbf{Излаз 1:} \texttt{expectedWinner = 4}
+	\item \textbf{Улаз 2:} \texttt{totalPlayers = 10, initialPasses = 1} \\
+	      \textbf{Излаз 2:} \texttt{expectedWinner = 8}
+\end{itemize}
+
+\sablon{Шаблон првог теста децембар 2025. група E}{2025/Decembar/GrupaE/AISP2025_Test1_GrupaE.linq}

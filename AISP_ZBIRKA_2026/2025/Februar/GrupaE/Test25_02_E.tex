@@ -1,0 +1,151 @@
+\rok{Фебруар 2026.}{Е}
+
+Други практични тест из Алгоритама и структура података
+
+Први практични тест одржан 13.02.2026.
+
+\zadatak{1}{Завршавање имплементације BFS алгоритма}
+Основна метода BFS алгоритма није потпуна. Допунити имплементацију ове методе која треба да омогући комплетно извршавање овог алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Написати алгоритам.
+	\item У Main методи креирати произволан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив BFS методе.
+	\item У template-у је закоментарисана метода \texttt{public void BFS(int startVertex)}.
+\end{itemize}
+
+\zadatak{2}{Проналажење карактера са максималним бројем појављивања}
+Написати методу која прима string и, користећи хеш табелу, проналази и исписује последњи карактер који се у string-у појављује више од једног пута.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу за чување карактера који су већ "видени".
+	\item Имплементацију писати у методи:
+	\begin{Verbatim}[fontsize=\small]
+public static void printFirstRepeating(string str)
+	\end{Verbatim}
+	\item Разлика између малих и великих слова постоји.
+	\item Временска комплексност треба да буде: O(n)
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str = "Algoritmi i strukture"}
+	\item \textbf{Излаз 1:} \texttt{"i"} (појављује се 3 пута)
+	\item \textbf{Улаз 2:} \texttt{str = "Vetar"}
+	\item \textbf{Излаз 2:} \texttt{"Vetar"} (сви карактери се појављују само једном)
+	\item \textbf{Улаз 3:} \texttt{str = "Milimetar"}
+	\item \textbf{Излаз 3:} \texttt{"m"} (карактери "i" и "m" су једини који се појављују два пута)
+\end{itemize}
+
+\zadatak{3}{Путања "Само Парни" (Even-Only Path)}
+У оквиру класе BinarySearchTree написати методу која проверава да ли у стаблу постоји путања од корена до било ког листа таква да су сви чворови на тој путањи парни бројеви.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода:
+	\begin{Verbatim}[fontsize=\small]
+public bool hasEvenOnlyPath ()
+	\end{Verbatim}
+	\item Приватна метода:
+	\begin{Verbatim}[fontsize=\small]
+private bool hasEvenOnlyPath (Node current)
+	\end{Verbatim}
+	\item Подразумева се да стабло има барем два чвора.
+	\item Алгоритам ОБАВЕЗНО писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{/}
+	\item \textbf{Излаз 1:} \texttt{false}
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{/}
+	\item \textbf{Излаз 2:} \texttt{true (10 - 20 - 12 - 14)}
+\end{itemize}
+
+\sablon{Шаблон другог теста фебруар 2026. група Е}{2025/Februar/GrupaE/AISP2025_Test2_GrupaE.linq}

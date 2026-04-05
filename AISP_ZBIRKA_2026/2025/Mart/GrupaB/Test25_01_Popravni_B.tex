@@ -1,0 +1,91 @@
+\rok{Март 2026.}{B}
+
+Трећи поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 06.03.2026.
+
+\zadatak{1}{Merge Sort}
+Написати методу \texttt{merge} Merge Sort алгоритма за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item У template-у се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+	\item У оквиру класе \texttt{MergeSort} написати имплементацију за методу:
+	\begin{Verbatim}[fontsize=\small]
+private static void merge(long[] arr, long[] tmpArray, int lowerIndex, int middleIndex, int upperIndex)
+	\end{Verbatim}
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+\zadatak{2}{Замена места првом и последњем парном чвору}
+Написати методу која у једном пролазу идентификује први и последњи парни чвор у листи и замени им њихове вредности (value). Остатак листе и везе између чворова морају остати нетакнути.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Задатак решити у линеарном времену $O(n)$.
+	\item Ако у листи има мање од два парна броја, метода не ради ништа.
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\small]
+public void swapEvenBounds()
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{1 -> 2 -> 3 -> 10}
+	\item \textbf{Излаз:} \texttt{1 -> 10 -> 3 -> 2}
+\end{itemize}
+
+\zadatak{3}{Контрола протока у уском грлу (Gateway Traffic Controller)}
+Мрежни пролаз (Gateway) прима пакете података. Постоје два ограничења: укупна количина података у бајтовима коју пролаз може да обради у секунди, и максималан број пакета (slotova) који могу истовремено бити у обради због ограниченог броја хардверских канала.
+
+Опис задатка: Написати методу која симулира пролаз пакета кроз gateway. Метода прима низ \texttt{packetSizes}, максимални капацитет бајтова \texttt{maxBytes} и максималан број slotova \texttt{maxSlots}.
+
+\begin{enumerate}
+	\item Пакети пристижу један по један.
+	\item Да би нови пакет ушао у обраду, мора бити испуњено:
+	\begin{itemize}
+		\item Тренутна сума бајтова у обради + нови пакет $\leq$ \texttt{maxBytes}.
+		\item Тренутни број пакета у обради + 1 $\leq$ \texttt{maxSlots}.
+	\end{itemize}
+	\item Ако услови нису испуњени, gateway избацује најстарије пакете све док оба услова не буду задовољена.
+	\item Ако је пакет сам по себи већи од \texttt{maxBytes}, он се игнорише.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Повратна вредност: \texttt{int[]} (низ величина пакета који су остали у обради на крају симулације).
+	\item Пomoћна структура: користити достављену класу \texttt{Queue}.
+	\item Потпис:
+	\begin{Verbatim}[fontsize=\small]
+public int[] simulateGateway(int[] packetSizes, int maxBytes, int maxSlots)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{packetSizes = [10, 10, 10, 10, 50, 5], maxBytes = 60, maxSlots = 3}
+	\item \textbf{Симулација корак по корак:}
+	\begin{enumerate}
+		\item Стиже \texttt{10}: Slotovi \texttt{(1/3)}, тежина \texttt{(10/60)}. Ok.
+		\item Стиже \texttt{10}: Slotovi \texttt{(2/3)}, тежина \texttt{(20/60)}. Ok.
+		\item Стиже \texttt{10}: Slotovi \texttt{(3/3)}, тежина \texttt{(30/60)}. Ok.
+		\item Стиже \texttt{10}: Problem! Slotovi би били \texttt{4/3}. Избацује се најстарији \texttt{10}. Стање: \texttt{[10, 10, 10]}.
+		\item Стиже \texttt{50}: Problem! Тежина би била \texttt{30+50=80}.
+		\begin{itemize}
+			\item Избацује се најстарији \texttt{10}. Тежина \texttt{20+50=70} (и даље превише).
+			\item Избацује се следећи најстарији \texttt{10}. Тежина \texttt{10+50=60}. (Сада је OK).
+			\item Стање: \texttt{[10, 50]}.
+		\end{itemize}
+		\item Стиже \texttt{5}: Slotovi су \texttt{2/3}, али тежина би била \texttt{60+5=65}.
+		\begin{itemize}
+			\item Избацује се најстарији \texttt{10}. Тежина \texttt{50+5=55}. (Сада је OK).
+			\item Стање: \texttt{[50, 5]}.
+		\end{itemize}
+	\end{enumerate}
+	\item \textbf{Излаз 1:} \texttt{[50, 5]}
+\end{itemize}
+
+\sablon{Шаблон трећег поправног теста март 2026. група Б}{2025/Mart/GrupaB/AISP2025_PopravniTest3_Test1_GrupaB.linq}

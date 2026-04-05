@@ -1,0 +1,72 @@
+\rok{Фебруар 2024.}{А - Поправни тест првог теста}
+
+Други поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 30.01.2024.
+
+\zadatak{1}{Проналажење елемента у реду (Queue Peek)}
+Написати методу која имплементира стандардан начин за проналажење елемента са врха реда.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Алгоритам написати у оквиру закоментарисане методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+peek(int value)
+	\end{Verbatim}
+	\item Поменута метода налази се у оквиру класе \texttt{Queue} која се налази у придруженом template-у.
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Једнакост сума испод и изнад главне дијагонале квадратне матрице}
+Написати алгоритам који ће проверити да ли се суме испод и изнад главне дијагонале квадратне матрице поклапају. Главна дијагонала садржи све елементе на путањи од поља које се налази у горњем левом ћошку, до поља које се налази у доњем десном ћошку (нулама је означена главна дијагонала).
+
+$$\begin{bmatrix} 0 & 3 & 2 \\ 2 & 0 & 4 \\ 3 & 4 & 0 \end{bmatrix}$$
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Алгоритам треба да резултује исписом у конзоли у формату: „Suma ispod i iznad glavne dijagonale se (ne) poklapa".
+	\item Алгоритам писати у оквиру методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void findSumBelowAndAboveMainDiagonal(long[,] matrix, int rows, int cols)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Пример 1:} \\
+		  \textbf{Улаз:} $\begin{bmatrix} 0 & 3 & 2 \\ 2 & 0 & 4 \\ 3 & 4 & 0 \end{bmatrix}$, 3, 3 \\
+		  \textbf{Излаз:} „Suma ispod i iznad glavne dijagonale se poklapa"
+	\item \textbf{Пример 2:} \\
+		  \textbf{Улаз:} $\begin{bmatrix} 0 & -1 & 2 \\ 2 & 0 & 4 \\ 3 & 4 & 0 \end{bmatrix}$, 3, 3 \\
+		  \textbf{Излаз:} „Suma ispod i iznad glavne dijagonale se ne poklapa"
+\end{itemize}
+
+
+
+\zadatak{3}{Кумулативна сума вредности левих суседа}
+Написати алгоритам који модификује листу тако што вредност чвора замењује вредношћу суме свих елемената који се у листи налазе са његове леве стране.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void calculateCumulativeSum()
+	\end{Verbatim}
+	\item Методу писати у оквиру класе \texttt{LinkedList}.
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Пример 1:} \\
+		  \textbf{Улаз:} \texttt{LinkedList: 1 -> 0 -> 6 -> 8 -> 4} \\
+		  \textbf{Излаз:} \texttt{0 -> 1 -> 1 -> 7 -> 15}
+	\item \textbf{Пример 2:} \\
+		  \textbf{Улаз:} \texttt{LinkedList: 1 -> 2 -> 4 -> 0 -> 6} \\
+		  \textbf{Излаз:} \texttt{0 -> 1 -> 3 -> 7 -> 7}
+\end{itemize}
+
+
+
+\sablon{Шаблон поправног првог теста фебруар 2024. група А}{2023/Februar/GrupaA/AISP2023_PopravniFebruar_Test1_GrupaA.linq}

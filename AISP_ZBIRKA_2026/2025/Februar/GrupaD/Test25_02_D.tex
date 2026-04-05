@@ -1,0 +1,148 @@
+\rok{Фебруар 2026.}{D}
+
+Други практични тест из Алгоритама и структура података
+
+Први практични тест одржан 11.02.2026.
+
+\zadatak{1}{Имплементација DFSVisit методе Depth-First-Search алгоритма}
+Написати имплементацију DFSVisit методе истоимене алгоритма.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item a) Написати алгоритам.
+	\item b) У Main методи креирати произволан граф. Обезбедити начин за тестирање и проверу нове функционалности, односно позив DFS методе.
+	\item У template-у је метода \texttt{private void DFSVisit(LinkedList.Node node, int nodeIndex)} која је основна метода за рекурзивно извршавање DFS алгоритма.
+\end{itemize}
+
+\zadatak{2}{Први неповољени карактер}
+Написати методу која проналази и исписује први карактер у string-у који се појављује само једном.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Користити Hash табелу из шаблона за чување броја појављивања сваког карактера.
+	\item Имплементацију писати у методи:
+	\begin{Verbatim}[fontsize=\small]
+public static void printFirstUnique(string str)
+	\end{Verbatim}
+	\item Разлика између малих и великих слова постоји.
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{str = "Algoritmi i strukture"}
+	\item \textbf{Излаз 1:} \texttt{"i"}
+	\item \textbf{Улаз 2:} \texttt{str = "Vetar"}
+	\item \textbf{Излаз 2:} \texttt{"Ne ponavlja se nijedan karakter"}
+\end{itemize}
+
+\zadatak{3}{Путања са највише парних бројева}
+Написати методу која проверава да ли постоји путања од корена до било ког листа која садржи барем k парних бројева.
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Јавна метода:
+	\begin{Verbatim}[fontsize=\small]
+public bool hasPathWithEvenCount(int k)
+	\end{Verbatim}
+	\item Приватна метода:
+	\begin{Verbatim}[fontsize=\small]
+private bool hasPathWithEvenCount(Node current, int currentEvenCount, int k)
+	\end{Verbatim}
+	\item Подразумева се да стабло има барем два чвора.
+	\item Алгоритам ОБАВЕЗНО писати у оквиру класе \texttt{BinarySearchTree}.
+\end{itemize}
+
+\textbf{Примери:}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[8
+	[4
+		[2
+			[, phantom]
+			[3]
+		]
+		[5]
+	]
+	[9
+		[, phantom]
+		[11]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 1.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 1:} \texttt{k = 4}
+	\item \textbf{Излаз 1:} \texttt{false}
+\end{itemize}
+
+\begin{center}
+\begin{minipage}{\textwidth}
+\centering
+\begin{forest}
+for tree={
+	circle,
+	draw,
+	thick,
+	fill=gray!20,
+	minimum size=8mm,
+	inner sep=1pt,
+	s sep=8mm,
+	l sep=12mm,
+	edge={-, thick},
+	font=\small
+}
+[10
+	[4
+		[2
+			[3]
+			[, phantom]
+		]
+		[6
+			[5]
+			[9]
+		]
+	]
+	[20
+		[12
+			[, phantom]
+			[14]
+		]
+		[29
+			[27]
+			[, phantom]
+		]
+	]
+]
+\end{forest}
+
+\vspace{0.3cm}
+\textbf{Слика 2.} Пример BST-a.
+\end{minipage}
+\end{center}
+
+\begin{itemize}
+	\item \textbf{Улаз 2:} \texttt{k = 4}
+	\item \textbf{Излаз 2:} \texttt{true (10 - 20 - 12 - 14)}
+\end{itemize}
+
+\sablon{Шаблон другог теста фебруар 2026. група D}{2025/Februar/GrupaD/AISP2025_Test2_GrupaD.linq}

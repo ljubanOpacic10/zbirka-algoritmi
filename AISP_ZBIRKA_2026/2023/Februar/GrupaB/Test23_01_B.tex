@@ -1,0 +1,65 @@
+\rok{Фебруар 2024.}{В - Поправни тест првог теста}
+
+Други поправни тест из Алгоритама и структура података
+
+Први практични тест одржан 30.01.2024.
+
+\zadatak{1}{Брисање елемената из реда (Queue Dequeue)}
+Написати методу која имплементира стандардан начин за брисање елемената из реда.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Алгоритам написати у оквиру закоментарисане методе \texttt{dequeue?()}.
+	\item Поменута метода налази се у оквиру класе \texttt{Queue} која се налази у придруженом template-у.
+	\item Обезбедити код у Main методи за тестирање алгоритма.
+\end{itemize}
+
+
+
+\zadatak{2}{Симетричност матрице}
+Написати алгоритам који ће проверити да ли је матрица симетрична. Нека квадратна матрица је симетрична ако се елементи изнад и испод главне дијагонале пресликавају. Главна дијагонала садржи све елементе на путањи од поља које се налази у горњем левом ћошку, до поља које се налази у доњем десном ћошку.
+
+$$\begin{bmatrix} 0 & 3 & 2 \\ 3 & 0 & 4 \\ 2 & 4 & 0 \end{bmatrix}$$
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{itemize}
+	\item Алгоритам треба да резултује исписом у конзоли у формату: „Matrica (ni)je simetrična“.
+	\item Алгоритам писати у оквиру методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public static void isMatrixSymmetric(long[,] matrix, int rows, int cols)
+	\end{Verbatim}
+\end{itemize}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз 1:} $\begin{bmatrix} 0 & -1 & 2 \\ 3 & 0 & 4 \\ 2 & 4 & 0 \end{bmatrix}$, 3, 3
+	\item \textbf{Излаз 1:} „Matrica nije simetrična“
+	\item \textbf{Улаз 2:} $\begin{bmatrix} 0 & 3 & 2 \\ 3 & 0 & 4 \\ 2 & 4 & 0 \end{bmatrix}$, 3, 3
+	\item \textbf{Излаз 2:} „Matrica je simetrična“
+\end{itemize}
+
+
+
+\zadatak{3}{Проналажење најдуже подлисте парних бројева}
+Написати алгоритам који проналази најдужу подлисту парних елемената. Вредности из пронађене подлисте исписати у конзоли, или исписати да таква подлиста не постоји.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе:
+	\begin{Verbatim}[fontsize=\footnotesize, numbers=left, xleftmargin=10mm]
+public void findLargestEvenNumbersSubList()
+	\end{Verbatim}
+	\item Методу писати у оквиру класе \texttt{LinkedList}.
+\end{itemize}
+
+\textbf{Примери:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 0 -> 6 -> 8 -> 4}
+	\item \textbf{Излаз:} \texttt{0 6 8 4}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 5 -> 3}
+	\item \textbf{Излаз:} \texttt{Ne postoji podlista parnih brojeva}
+\end{itemize}
+
+
+
+\sablon{Шаблон поправног за први тест фебруар 2024. група Б}{2023/Februar/GrupaB/AISP2023_PopravniFebruar_Test1_GrupaB.linq}
