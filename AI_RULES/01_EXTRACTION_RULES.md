@@ -37,14 +37,15 @@ Recognize sections like:
 Extract as bullet points
 
 #### - Method signatures
-Extract EXACTLY as written:
+Extract EXACTLY as written
+
 Example:
 private static void merge(...)
 
-⚠️ DO NOT FIX OR MODIFY SIGNATURES
+⚠️ DO NOT FIX OR MODIFY SIGNATURES during extraction
 
 #### - Examples
-Extract all input/output examples
+Extract all input/output examples exactly as they appear in the PDF
 
 ---
 
@@ -62,7 +63,10 @@ Return ONLY JSON:
       "description": "",
       "requirements": [],
       "signatures": [],
-      "examples": []
+      "examples": [],
+      "known_bst_image": "none",
+      "images": [],
+      "captions": []
     }
   ]
 }
@@ -86,7 +90,9 @@ If the PDF contains images (e.g. diagrams, trees, graphs, illustrations):
 
 - Detect ALL images related to tasks
 - Associate each image with the correct task
-- Extract image metadata:
+- Extract image metadata only if needed for downstream processing
+
+Generic fallback structure:
 
 {
   "images": [
@@ -100,42 +106,67 @@ If the PDF contains images (e.g. diagrams, trees, graphs, illustrations):
 
 RULES:
 - DO NOT ignore images
-- DO NOT describe images in text instead of extracting them
+- DO NOT describe images in place of extracting them unless the simplified known-image rule applies
 - DO NOT generate new images
 - If caption exists (e.g. "Slika 1 - Primer BST-a") → extract it
 - If no caption → leave empty string
 
-## IMAGE TYPE CLASSIFICATION
+## KNOWN BST IMAGE DETECTION (SIMPLIFIED)
 
-If the PDF contains visual examples, classify each visual into one of these types:
+For this project, there are only TWO known BST images that may appear repeatedly in tests.
 
-- `raster_image` — ordinary extracted image from PDF
-- `diagram_reconstructable` — simple structural diagram that can be faithfully rebuilt in LaTeX
-  (examples: BST trees, binary trees, simple graph/tree diagrams)
-- `unknown_visual`
+### Known BST image 1
+BST structure:
+- root 8
+- left child 4
+- right child 9
+- 4 has children 2 and 5
+- 2 has child 3
+- 9 has child 11
 
-For each visual store:
+### Known BST image 2
+BST structure:
+- root 10
+- left child 4
+- right child 20
+- 4 has children 2 and 6
+- 2 has child 3
+- 6 has children 5 and 9
+- 20 has children 12 and 29
+- 12 has child 14
+- 29 has child 27
+
+For each task, detect whether:
+- no known BST image exists
+- known BST image 1 exists
+- known BST image 2 exists
+
+Store this in structured output as:
 
 {
-  "images": [
+  "tasks": [
     {
-      "task_index": 1,
-      "caption": "",
+      "title": "",
       "description": "",
-      "image_type": "raster_image",
-      "image_path": "",
-      "reconstruction_hint": ""
+      "requirements": [],
+      "signatures": [],
+      "examples": [],
+      "known_bst_image": "none"
     }
   ]
 }
 
+Allowed values:
+- "none"
+- "bst_image_1"
+- "bst_image_2"
+
 RULES:
-- If the visual is a simple tree/graph-like academic diagram, prefer `diagram_reconstructable`
-- If the visual contains styling, screenshots, or non-trivial graphics, use `raster_image`
-- `description` must briefly describe the actual structure shown in the image
-- `reconstruction_hint` should contain concise structural information useful for LaTeX reconstruction
-  Example:
-  "BST root 8; left child 4; right child 9; 4 has children 2 and 5; 2 has right child 3; 9 has right child 11"
+- Prefer identifying one of the two known BST images instead of generic image extraction
+- DO NOT generate image paths for these two known BST images
+- DO NOT require external image files for these two known BST images
+- If a caption exists in PDF, extract it separately
+- If both known BST images appear in the same task, preserve their order of appearance in examples/captions
 
 ## IMAGE CAPTION EXTRACTION
 
@@ -146,3 +177,13 @@ Examples:
 - "Slika 2 - Primer BST-a"
 
 Do not rewrite captions during extraction.
+
+## GENERIC IMAGE FALLBACK
+
+If a task contains some image that is NOT one of the two known BST images:
+
+- keep generic image metadata in `images`
+- preserve caption if available
+- leave `known_bst_image` as `"none"`
+
+Use generic image fallback ONLY for unknown visuals.

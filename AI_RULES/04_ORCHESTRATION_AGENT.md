@@ -15,7 +15,6 @@ You MUST follow a strict multi-step pipeline.
   - 01_EXTRACTION_RULES.md
   - 02_LATEX_GENERATION_RULES.md
   - 03_VALIDATION_CHECKLIST.md
-
 - DO NOT generate final output until validation passes
 - DO NOT modify content unless required by rules
 
@@ -51,9 +50,21 @@ STRICT RULES:
 ## IMAGE PROCESSING
 
 During extraction:
-- Detect all images in PDF
-- Map images to corresponding tasks
-- Preserve order of appearance
+- Detect whether a task contains one of the two known BST images
+- If yes, mark the task with the corresponding known image identifier
+- Preserve caption text if present
+- Preserve order of image/example appearance
+
+## KNOWN IMAGE DETECTION PRIORITY
+
+Before any generic image processing, first check whether the task contains one of the two known BST images.
+
+If yes:
+- mark the task with the corresponding known image identifier
+- skip generic image extraction logic for that image
+
+If not:
+- use generic image fallback metadata only if another image actually exists
 
 ---
 
@@ -77,23 +88,29 @@ STRICT RULES:
 ## IMAGE INTEGRATION
 
 During LaTeX generation:
-- Insert images into correct task sections
-- Use \includegraphics with relative paths
-- Preserve captions if available
+- if task uses known BST image 1, insert the predefined LaTeX code for image 1
+- if task uses known BST image 2, insert the predefined LaTeX code for image 2
+- do not generate new tree code for these two known images
+- do not use \includegraphics for these two known images
+- for non-known images only, use generic image fallback rules
 
-## VISUAL DECISION STEP (MANDATORY)
+## SIMPLIFIED IMAGE RULE
 
-Before writing LaTeX for a task with visuals, explicitly decide:
+For the two known BST images, no visual strategy decision is needed.
 
-- use native LaTeX reconstruction
-or
-- use extracted raster image
+The strategy is fixed:
+- always use the predefined project-approved LaTeX tree code
 
-Decision rule:
-- prefer native LaTeX reconstruction for simple academic tree/BST diagrams
-- use extracted raster images for non-trivial visuals
+## PROJECT STYLE PRIORITY
 
-This decision MUST happen before LaTeX generation.
+If there is a conflict between generic rules and an existing good project example,
+follow the existing good project example.
+
+Priority order:
+1. Existing valid project `.tex` examples
+2. 02_LATEX_GENERATION_RULES.md
+3. 03_VALIDATION_CHECKLIST.md
+4. generic fallback behavior
 
 ---
 
@@ -109,10 +126,27 @@ OUTPUT:
 - PASS or FAIL
 - List of issues (if any)
 
-## IMAGE VALIDATION ENFORCEMENT
+## KNOWN IMAGE VALIDATION ENFORCEMENT
 
-If PDF contains images AND LaTeX does NOT include them:
+If the PDF contains one of the two known BST images and the final LaTeX does not use the predefined matching LaTeX code:
 - VALIDATION = FAIL
+
+## GENERIC IMAGE VALIDATION ENFORCEMENT
+
+If the PDF contains a non-known image and LaTeX does not include it correctly:
+- VALIDATION = FAIL
+
+## OVERLEAF COMPILATION SAFETY
+
+Validation must also check likely Overleaf failure causes:
+
+- broken environment structure
+- invalid image paths
+- inconsistent caption formatting
+- PDF-wrap corruption inside Verbatim
+- project-incompatible \sablon line
+- orphaned content outside \zadatak blocks
+- malformed forest environment for known BST images
 
 ---
 
@@ -149,12 +183,11 @@ Return ONLY final LaTeX when ALL conditions are met:
 
 ## FILE WRITING RULES (CRITICAL)
 
-- ALWAYS use the `create_file` tool to write .tex files — NEVER use terminal commands (Python, PowerShell, etc.)
-- VS Code holds file locks on workspace files — terminal-based writes WILL fail with "Access denied"
-- Use `replace_string_in_file` for editing existing non-empty files
-- Use `create_file` for writing to new or empty files
-- NEVER attempt to delete/rename/copy .tex files via terminal
-- For `main.tex` updates, ALWAYS use `replace_string_in_file`
+- ALWAYS use the project-approved file writing method/tooling
+- NEVER use unsafe write behavior that can conflict with editor file locks
+- For existing files, use safe replacement/update workflow
+- For new files, use the project-approved create workflow
+- For `main.tex` updates, use safe replacement/update workflow only
 
 ---
 
@@ -162,48 +195,29 @@ Return ONLY final LaTeX when ALL conditions are met:
 
 Produce a fully correct, validated, and consistent LaTeX file
 that can be directly used in Overleaf without modification.
-After writing latex file update main.tex file to stay consitent with newly created folder and files.
+
+After writing the LaTeX file, update `main.tex` so it stays consistent with newly created folders and files.
 
 ## STRICT VALIDATION ENFORCEMENT
 
 If ANY of the following occurs:
-- Wrong \zadatak format
-- Invented content
-- Missing required structure
+- wrong \zadatak format
+- invented content
+- missing required structure
+- wrong known BST image handling
+- invalid generic image handling
+- broken LaTeX structure
 
 THEN:
-- Output is INVALID
+- output is INVALID
 - MUST be fixed before returning final result
 
 ## FINAL OUTPUT RULE (STRICT)
 
 Return output ONLY if:
-
-- Validation PASSED
-- All checklist items are satisfied
+- validation PASSED
+- all checklist items are satisfied
 
 Otherwise:
 - DO NOT return final LaTeX
-- Continue fixing
-
-## STRICT VALIDATION ENFORCEMENT
-
-If ANY of the following occurs:
-- Wrong \zadatak format
-- Invented content
-- Missing required structure
-
-THEN:
-- Output is INVALID
-- MUST be fixed before returning final result
-
-## PROJECT STYLE PRIORITY
-
-If there is a conflict between generic rules and an existing good project example,
-follow the existing good project example.
-
-Priority order:
-1. Existing valid project `.tex` examples
-2. 02_LATEX_GENERATION_RULES.md
-3. 03_VALIDATION_CHECKLIST.md
-4. generic fallback behavior
+- continue fixing

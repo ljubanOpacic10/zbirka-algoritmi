@@ -1,0 +1,97 @@
+\rok{Децембар 2025.}{C}
+
+Први практични тест из Алгоритама и структура података
+
+\zadatak{1}{Insertion Sort}
+Написати Insertion Sort алгоритам за сортирање целобројног низа дужине $n$.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Улаз је несортиран низ целих бројева.
+	\item Излаз је сортирани низ целих бројева.
+	\item У template-у се налази класа \texttt{RandomArrayGenerator} коју треба искористити за генерисање низа случајних бројева.
+	\item Креирати класу \texttt{InsertionSort} и у оквиру ње генерисати методу:
+	\begin{Verbatim}[fontsize=\small]
+public static void sort(long[] arr)
+	\end{Verbatim}
+\end{itemize}
+
+\zadatak{2}{Кумулативна сума вредности левих суседа}
+Написати алгоритам који модификује листу тако што вредност чвора замењује вредношћу суме свих елемената који се у листи налазе са његове леве стране.
+
+\textbf{Додатне напомене за решавање задатка:}
+\begin{itemize}
+	\item Захтеван потпис методе: \texttt{public static void calculateCumulativeSum()}.
+	\item Методу писати у оквиру класе \texttt{LinkedList}.
+\end{itemize}
+
+\textbf{Потпис методе:}
+\begin{Verbatim}[fontsize=\small]
+public static void calculateCumulativeSum()
+\end{Verbatim}
+
+\textbf{Пример:}
+\begin{itemize}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 0 -> 6 -> 8 -> 4} \\
+		  \textbf{Излаз:} \texttt{0 -> 1 -> 1 -> 7 -> 15}
+	\item \textbf{Улаз:} \texttt{LinkedList: 1 -> 2 -> 4 -> 0 -> 6} \\
+		  \textbf{Излаз:} \texttt{0 -> 1 -> 3 -> 7 -> 7}
+\end{itemize}
+
+\zadatak{3}{Towers of Hanoi}
+Ханојске куле су класична математичка игра која се састоји од три штапа и одређеног броја дискова различитих величина који се могу низати на штапове. Игра почиње са свим дисковима наслаганим на једном штапу у растућем редоследу (најмањи на врху), формирајући облик конуса.
+
+\textbf{Проблем:} Циљ је пребацити цео сет дискова са почетног штапа (Извор) на завршни штап (Циљ), користећи помоћни штап (Помоћни), поштујући следећа правила:
+\begin{enumerate}
+	\item Само један диск се може померати у датом тренутку.
+	\item Сваки покрет се састоји од узимања горњег диска са једног од штапова и постављања на врх другог штапа.
+	\item Златно правило: Ниједан диск не сме бити постављен изнад диска који је мањи од њега.
+\end{enumerate}
+
+\textbf{Додатни захтеви за решавање задатка:}
+\begin{enumerate}
+	\item Задатак решавати у оквиру методе:
+	\begin{Verbatim}[fontsize=\small]
+public void SolveHanoi(int n, Stack source, Stack destination, Stack auxiliary)
+	\end{Verbatim}
+	\item Симулација помоћу стекова:
+	\begin{itemize}
+		\item Сваки од три штапа (Извор, Циљ, Помоћни) мора бити представљен објектом класе \texttt{Stack}.
+		\item Дискови су представљени целим бројевима (нпр. диск величине 3 је већи од диска величине 1).
+		\item Операције померања дискова морају се вршити искључиво методама \texttt{push()} и \texttt{pop()}.
+	\end{itemize}
+	\item Резултат извршавања:
+	\begin{itemize}
+		\item Метода треба да исписује сваки корак (нпр. \texttt{"Померен диск 1 са штапа A на штап C"}).
+		\item На крају извршавања, \texttt{source} и \texttt{auxiliary} стекови морају остати празни, а \texttt{destination} стек мора садржати све дискове у исправном редоследу.
+	\end{itemize}
+\end{enumerate}
+
+\textbf{Пример:}
+
+\textbf{Улаз:} \texttt{[6, 5, 4, 3, 2, 1]}
+
+\begin{itemize}
+	\item \textbf{Корак 0:} \\
+		  \texttt{Source Stack \{6, 5, 4, 3, 2, 1\}} -- 1 је на врху стека \\
+		  \texttt{Destination Stack \{\}} \\
+		  \texttt{Auxiliary Stack \{\}}
+	\item \textbf{Корак 1:} \\
+		  \texttt{Source Stack \{6, 5, 4, 3, 2\}} -- 2 је на врху стека \\
+		  \texttt{Destination Stack \{\}} \\
+		  \texttt{Auxiliary Stack \{1\}} -- 1 је на врху стека
+	\item \textbf{Корак 2:} \\
+		  \texttt{Source Stack \{6, 5, 4, 3\}} -- 3 је на врху стека \\
+		  \texttt{Destination Stack \{2\}} -- 2 је на врху стека \\
+		  \texttt{Auxiliary Stack \{1\}} -- 1 је на врху стека
+	\item \textbf{Корак 3:} \\
+		  \texttt{Source Stack \{6, 5, 4, 3\}} -- 3 је на врху стека \\
+		  \texttt{Destination Stack \{2, 1\}} -- 1 је на врху стека \\
+		  \texttt{Auxiliary Stack \{\}}
+	\item \textbf{Корак n:} \\
+		  \texttt{Source Stack \{\}} \\
+		  \texttt{Destination Stack \{6, 5, 4, 3, 2, 1\}} -- 1 је на врху стека \\
+		  \texttt{Auxiliary Stack \{\}}
+\end{itemize}
+
+\sablon{Шаблон првог теста децембар 2025. група C}{2025/Decembar/GrupaC/AISP2025_Test1_GrupaC.linq}
